@@ -1,0 +1,208 @@
+{
+
+  "name": "Nicholas J. Roberts",
+
+  "meta": {
+    "format": "FRESH@0.6.0",
+    "version": "0.4.0"
+  },
+
+  "info": {
+    "label": "Developer",
+    "characterClass": "Programmer",
+    "brief": "Computer Science student. Further TBD",
+    "image": "nicholas_roberts.png"
+  },
+
+  "contact": {
+    "email": "nicholas.roberts.au@gmail.com"
+  },
+
+  "location": {
+    "city": "Melbourne",
+    "region": "VIC",
+    "country": "AU"
+  },
+
+  "projects": [
+    {
+      "title": "Zeitgeist",
+      "category": "foss",
+      "role": "creator",
+      "url": "http://h-plus-time.github.io/zeitgeist-front",
+      "repo": "https://github.com/H-Plus-Time/augmented-melbourne.git",
+      "description": "",
+      "start": "2016-09",
+      "summary": "",
+      "keywords": ["Polymer", "golang", "pubmed"]
+    }
+  ],
+
+  "social": [
+
+    {
+      "label": "GitHub",
+      "network": "GitHub",
+      "user": "H-Plus-Time",
+      "url": "https://github.com/H-Plus-Time"
+    },
+
+    {
+      "label": "Twitter",
+      "network": "Twitter",
+      "user": "H-Plus-Time",
+      "url": "https://twitter.com/H-Plus-Time"
+    }
+  ],
+
+  "employment": {
+
+  },
+
+  "education": {
+
+    "summary": "",
+
+    "level": "degree",
+
+    "degree": "BCompSci",
+
+    "history": [
+
+      {
+        "institution": "RMIT University",
+        "title": "Bachelor of Computer Science",
+        "url": "https://www.rmit.edu.au/",
+        "start": "2014-07",
+        "grade": "2.7",
+        "summary": "A multiline summary of the education.",
+        "curriculum": ["Algorithms and Analysis", "Web Database Applications"]
+      },
+      {
+        "institution": "La Trobe University",
+        "title": "Bachelor of Nanotechnology (Hons)/Masters of Nanotechnology",
+        "url": "https://latrobe.edu.au",
+        "start": "2012-02",
+        "end": "2014-06",
+        "curriculum": ["Imaging and Materials Characterisation", "Modern Physics", "Linear Algebra"]
+      }
+    ]
+
+  },
+
+  "affiliation": {
+    "summary": "",
+    "history": [
+    ]
+  },
+
+  "skills": {
+
+    "sets": [
+      {
+        "name": "Web",
+        "level": "intermediate",
+        "skills": [
+          "JavaScript", "HTML 5", "CSS", "LAMP", "MVC", "REST"
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "level": "intermediate",
+        "skills": [
+          "Node.js", "jQuery", "Bootstrap", "Polymer"
+        ]
+      },
+      {
+        "name": "Database",
+        "level": "intermediate",
+        "skills": [
+          "MySQL", "Tinkerpop", "NoSQL", "ORM", "gremlin", "OGM"
+        ]
+      }
+      {
+        "name": "Project",
+        "level": "beginner",
+        "skills": [
+          "Agile", "GitHub"
+        ]
+      }
+    ],
+
+    "list": [
+      {
+        "name": "Python",
+        "id": "1",
+        "summary": "Optional summary of your experience with the skill.",
+        "level": "9",
+        "years": 2,
+        "proof": "http://myblog.com/interesting-cplusplus-post"
+      },
+      {
+        "name": "Linux",
+        "summary": "Optional summary of your experience with the skill.",
+        "level": "intermediate",
+        "years": "6+"
+      },
+      {
+        "name": "Agile",
+        "summary": "Optional summary of your experience with the skill.",
+        "level": "B+",
+        "years": 2
+      }
+    ]
+  },
+
+  "samples": [
+  ],
+
+  "writing": [
+  ],
+
+  "reading": [
+  ],
+
+  "speaking": [
+  ],
+
+  "recognition": [
+  ],
+
+  "references": [
+  ],
+
+  "testimonials": [
+  ],
+
+  "languages": [
+    {
+      "language": "English",
+      "level": "Native"
+    }
+  ],
+
+  "extracurricular": [
+    {
+      "title": "HealthHack",
+      "activity": "",
+      "location": "Melbourne, VIC, AU",
+      "start": "2016-06",
+      "highlights": [
+
+      ]
+    }
+  ],
+
+  "governance": [
+  ],
+
+  "interests": [
+    {
+      "name": "reading",
+      "summary": "",
+      "keywords": [ "science fiction", "Isaac Asimov", "Douglas Adams" ]
+    }
+  ]
+
+
+}
