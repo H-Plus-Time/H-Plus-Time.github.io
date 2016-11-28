@@ -93,8 +93,9 @@ function dependencies() {
 }
 
 function copyData() {
-  return gulp.src('*', { base: './data' })
-  .pipe(gulp.dest('build'));
+  return gulp.src('data/*')
+  .pipe(gulp.dest('./build/bundled/data'))
+  .pipe(gulp.dest('./build/unbundled/data'));
 }
 
 // Clean the build directory, split all source and dependency files into streams
@@ -103,11 +104,13 @@ function copyData() {
 gulp.task('default', gulp.series([
   clean.build,
   project.merge(source, dependencies),
-  project.serviceWorker
+  project.serviceWorker,
+  copyData
 ]));
 
 gulp.task('dev', gulp.series([
   clean.build,
   project.merge(source, dependencies),
-  project.serviceWorker
+  project.serviceWorker,
+  copyData
 ]));
