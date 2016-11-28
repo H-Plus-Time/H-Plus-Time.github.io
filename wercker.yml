@@ -9,7 +9,7 @@ build:
     - script:
         name: gulp install
         code: |
-          npm install -g gulp && gulp
+          npm install -g gulp-cli && gulp
     - script:
         name: npm test
         code: |
