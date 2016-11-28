@@ -7,6 +7,10 @@ build:
         code: |
           ./node_modules/bower/bin/bower install --allow-root --config.interactive=false
     - script:
+        name: gulp install
+        code: |
+          npm install -g gulp && gulp
+    - script:
         name: npm test
         code: |
           xvfb-run npm test
@@ -15,7 +19,7 @@ deploy:
     - script:
         name: compile app
         code: |
-          ./node_modules/gulp/bin/gulp
+          gulp
     - lukevivier/gh-pages@0.2.1:
         token: $GITHUB_TOKEN
         basedir: build/bundled
