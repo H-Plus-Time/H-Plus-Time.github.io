@@ -15,7 +15,7 @@ deploy:
     - script:
         name: compile app
         code: |
-          gulp
+          ./node_modules/gulp/bin/gulp
     - lukevivier/gh-pages@0.2.1:
         token: $GITHUB_TOKEN
         basedir: build/bundled
