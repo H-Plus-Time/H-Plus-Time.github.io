@@ -1,4 +1,4 @@
-box: markadams/docker-chromium-xvfb-js
+box: markadams/chromium-xvfb-js
 build:
   steps:
     - npm-install
