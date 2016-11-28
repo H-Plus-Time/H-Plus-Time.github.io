@@ -20,6 +20,7 @@ deploy:
         name: clone posts
         code: |
           cd build/bundled
+          ls
           rm -r blog
           git clone git@github.com:H-Plus-Time/blog.git && rm -r blog/.git
           ls blog
