@@ -16,10 +16,6 @@ build:
           xvfb-run npm test
 deploy:
   steps:
-    - script:
-        name: compile app
-        code: |
-          gulp
     - lukevivier/gh-pages@0.2.1:
         token: $GITHUB_TOKEN
         basedir: build/bundled
