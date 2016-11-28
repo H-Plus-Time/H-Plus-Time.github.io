@@ -16,7 +16,7 @@ build:
           xvfb-run npm test
 deploy:
   steps:
-    - lukevivier/gh-pages@0.2.1:
+    - leipert/git-push:
         branch: master
-        token: $GITHUB_TOKEN
+        gh_oauth: $GITHUB_TOKEN
         basedir: build/bundled
