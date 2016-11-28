@@ -16,6 +16,12 @@ build:
           xvfb-run npm test
 deploy:
   steps:
+    - script:
+        name: clone posts
+        code: |
+          cd build/bundled
+          git clone https://github.com/H-Plus-Time/blog.git
+          cd ../..
     - leipert/git-push:
         branch: master
         gh_oauth: $GITHUB_TOKEN
