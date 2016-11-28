@@ -46,6 +46,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 0 20px;
       }
 
+      paper-tab[link] a {
+          /* These mixins (from iron-flex-layout) center the link text. */
+          /*@apply(--layout-horizontal);*/
+          /*@apply(--layout-center-center);*/
+          color: inherit;
+          text-decoration: none;
+          padding-left:10px;
+          padding-right:10px;
+          flex: 1 1 auto;
+          height:50% !important;
+        }
+
       .drawer-list a {
         display: block;
 
@@ -93,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer>
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="home" href="/home">Home</a>
+          <a name="home" href="/#/home">Home</a>
           <a name="portfolio" href="/#/portfolio">Portfolio</a>
           <a name="resume" href="/#/resume">Resume</a>
         </iron-selector>
@@ -112,10 +124,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div hidden$="[[smallScreen]]">
               <paper-tabs selected="{{routeData.page}}"
                 attr-for-selected="name">
-                <paper-tab name="home">Home</paper-tab>
-                <paper-tab name="portfolio">Portfolio</paper-tab>
-                <paper-tab name="resume">Resume</paper-tab>
-                <paper-tab name="blog">blog</paper-tab>
+                <paper-tab name="home" link>
+                  <a href="/#/home" class="link">Home</a>
+                </paper-tab>
+                <paper-tab name="portfolio" link>
+                  <a href="/#/portfolio" class="link">Portfolio</a>
+                </paper-tab>
+                <paper-tab name="resume" link>
+                  <a href="/#/resume" class="link">Resume</a>
+                </paper-tab>
+                <paper-tab name="blog" link>
+                  <a href="/#/blog" class="link">Blog</a>
+                </paper-tab>
               </paper-tabs>
             </div>
           </app-toolbar>
