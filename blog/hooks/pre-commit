@@ -1,3 +1,0 @@
-git ls-files > file-list
-echo generated file list
-git add file-list
