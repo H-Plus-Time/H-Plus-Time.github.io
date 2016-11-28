@@ -19,12 +19,8 @@ deploy:
     - script:
         name: clone posts
         code: |
-          cd build/bundled
-          ls
-          rm -r blog
-          git clone git@github.com:H-Plus-Time/blog.git && rm -r blog/.git
-          ls blog
-          cd ../..
+          cd build/bundled && git clone git@github.com:H-Plus-Time/blog.git && \
+          rm -r blog/.git && cd ../..
     - leipert/git-push:
         branch: master
         gh_oauth: $GITHUB_TOKEN
