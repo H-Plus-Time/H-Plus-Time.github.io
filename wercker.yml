@@ -20,7 +20,7 @@ deploy:
         name: clone posts
         code: |
           echo $GITHUB_KEY_PRIVATE > /tmp/key && ssh-add /tmp/key && rm /tmp/key
-          cd build/bundled && git clone git@github.com:H-Plus-Time/blog.git && \
+          cd build/bundled && git clone https://github.com/H-Plus-Time/blog.git && \
           rm -r blog/.git && cd ../..
     - leipert/git-push:
         branch: master
