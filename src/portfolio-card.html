@@ -14,7 +14,7 @@
         background:white;
         @apply(--shadow-elevation-2dp);
       }
-      :host > div a div:hover {
+      :host > div:hover {
         @apply(--shadow-elevation-4dp);
       }
       img {
@@ -30,12 +30,12 @@
     </style>
     <div on-mouseover="_toggleView" on-mouseout="_toggleView">
       <a href="[[baseUrl]]/[[data.name]]" alt="[[data.name]]">
-        <div hidden$="[[hovered]]">
+        <div hidden$="[[_computeMainHidden(hovered, expanded)]]">
           <img src="[[baseUrl]]/[[data.name]]/[[data.logo]]"
             alt="[[data.name]]" />
         </div>
-        <div hidden$="[[!hovered]]">
-          
+        <div hidden$="[[_computeDetailHidden(hovered, expanded)]]">
+
         </div>
       </a>
     </div>
@@ -47,11 +47,29 @@
         hovered: {
           type: Boolean,
           value: _ => false
+        },
+        expanded: {
+          type: Boolean,
+          value: _ => false
         }
       },
       _toggleView() {
         this.hovered = !this.hovered;
+      },
+
+      _computeDetailHidden(hovered, expanded) {
+        if(expanded) {
+          return false;
+        }
+        return !hovered;
+      },
+      _computeMainHidden(hovered, expanded) {
+        if(expanded) {
+          return false;
+        }
+        return hovered;
       }
+
     });
   </script>
 </dom-module>
