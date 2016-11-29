@@ -21,12 +21,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="showcase-app">
   <template>
-    <style>
+    <style include="iron-flex iron-flex-alignment">
       :host {
         --app-primary-color: #eee;
         --app-secondary-color: black;
@@ -88,6 +89,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         right:0;
         text-transform:uppercase;
         --paper-tabs-selection-bar-color: var(--app-accent-color);
+      }
+      iron-pages {
+        height:calc(100% - 128px);
       }
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>

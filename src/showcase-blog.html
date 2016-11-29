@@ -1,57 +1,51 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="blog-post.html" />
 
 <dom-module id="showcase-blog">
   <template>
     <style>
       :host {
-        display: block;
+        display:block;
+        /*background:white;*/
+        max-width:960px;
+        margin:auto;
+        /*height:100%;*/
+      }
+      .blog-container {
+        position:relative;
+        width:100%;
+        /*height:100%;*/
+      }
+      iron-list {
+        /*height:100%;*/
       }
     </style>
     <iron-ajax auto
-      url="../data/example.md"
-      handle-as="text"
-      on-response="_processLinkTags"
-      last-response="{{content}}">
-    </iron-ajax>
-    <marked-element markdown$="{{content}}">
-      <div class="markdown-html">
-      </div>
-    </marked-element>
-    <iron-ajax auto
-      url="../blog/file-list"
-      handle-as="text"
+      url="../blog/sitemap.json"
+      handle-as="json"
       last-response="{{urls}}">
     </iron-ajax>
-    <iron-list items="[[_filteredUrls(urls)]]">
-      <template>
-        <blog-post url="[[item]]"></blog-post>
+    <div class="blog-container">
+      <template is="dom-repeat" items="[[_filteredUrls(urls)]]">
+          <blog-post prefix="blog" url="[[item]]"></blog-post>
       </template>
-    </iron-list>
+    </div>
   </template>
   <script>
     Polymer({
       is: 'showcase-blog',
       _filteredUrls(urls) {
-        return urls.filter((url) => (
-          ["file-list", "wercker.yml", "README.md"].indexOf(url) == -1
-        ))
+        console.log(urls);
+        return urls;
+        // return urls.filter((url) => (
+        //   ["file-list", "wercker.yml", "README.md"].indexOf(url) == -1
+        // ))
       },
-      _processLinkTags(data) {
-        var x = data.detail.response;
-        var tokens = marked.lexer(x);
-        var linkTags = tokens.filter((tok) => tok.text.indexOf("<link") != -1)
-        console.log(linkTags);
-        var linkRegex = /href=".*"/;
-        linkTags.map((link) => {
-          var hrefString = link.text.match(linkRegex)[0];
-          var hrefChunks = hrefString.split('"').length != 0 ? hrefString.split('"') : hrefString.split("'");
-          console.log(hrefChunks[1])
-          var resolvedPageUrl = this.resolveUrl(hrefChunks[1]);
-          this.importHref(resolvedPageUrl, null, null, true);
-        })
+      attached() {
+        // setTimeout(function() {this.$$('iron-list').resize();}.bind(this), 1000);
       }
     });
   </script>
