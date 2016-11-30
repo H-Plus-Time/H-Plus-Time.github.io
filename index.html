@@ -14,8 +14,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>Showcase</title>
-    <meta name="description" content="Showcase description">
+    <title>hplustime.com</title>
+    <meta name="description" content="Portfolio PWA of H-Plus-Time">
 
     <link rel="icon" href="/images/favicon.ico">
 
@@ -46,6 +46,68 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="msapplication-tap-highlight" content="no">
 
+    <link rel="import" href="/src/showcase-app.html" async>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        background-color: #eeeeee;
+      }
+    </style>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        line-height: 1.5;
+        height: 100%;
+        min-height: 100vh;
+        background-color: #eeeeee;
+      }
+      /* styling for render while resources are loading */
+      .splash {
+        display: block;
+        text-align: center;
+        font-weight: 300;
+        font-size: 18px;
+        color: black;
+        max-width: 400px;
+        margin: auto;
+        padding-top: 20%;
+      }
+      .loading-header {
+        height: 350px;
+        overflow: hidden;
+      }
+      .loading {
+        animation: blink 1.5s linear infinite;
+        -o-animation: blink 1.5s linear infinite;
+        -moz-animation: blink 1.5s linear infinite;
+        -webkit-animation: blink 1.5s linear infinite;
+      }
+      @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+      @-webkit-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+      @-moz-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+      @-o-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+    </style>
+  </head>
+  <body>
+    <showcase-app>
+      <div class="splash">
+        <div class="loading-header">
+          <div style="font-size:3.8em">
+            <img src="images/manifest/icon-192x192.png">
+          </div>
+          <h1 class="loading">
+            Loading...
+          </h1>
+        </div>
+
+      </div>
+    </showcase-app>
+    <!-- Built with love using Polymer Starter Kit -->
     <script>
       // Setup Polymer options
       window.Polymer = {
@@ -91,21 +153,5 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
       }
     </script>
-
-    <link rel="import" href="/src/showcase-app.html">
-
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
-        min-height: 100vh;
-        background-color: #eeeeee;
-      }
-    </style>
-  </head>
-  <body>
-    <showcase-app></showcase-app>
-    <!-- Built with love using Polymer Starter Kit -->
   </body>
 </html>
