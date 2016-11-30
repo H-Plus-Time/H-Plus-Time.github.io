@@ -98,6 +98,12 @@ function copyData() {
   .pipe(gulp.dest('./build/unbundled/data'));
 }
 
+function copySurgeIgnore() {
+  return gulp.src('.surgeignore')
+  .pipe(gulp.dest('./build/bundled'))
+  .pipe(gulp.dest('./build/unbundled'));
+}
+
 // Clean the build directory, split all source and dependency files into streams
 // and process them, and output bundled and unbundled versions of the project
 // with their own service workers
@@ -105,12 +111,14 @@ gulp.task('default', gulp.series([
   clean.build,
   project.merge(source, dependencies),
   project.serviceWorker,
-  copyData
+  copyData,
+  copySurgeIgnore
 ]));
 
 gulp.task('dev', gulp.series([
   clean.build,
   project.merge(source, dependencies),
   project.serviceWorker,
-  copyData
+  copyData,
+  copySurgeIgnore
 ]));

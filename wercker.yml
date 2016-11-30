@@ -21,6 +21,11 @@ build:
 deploy:
   steps:
     - script:
+        name: clone posts
+        code: |
+          cd build/bundled && git clone https://github.com/H-Plus-Time/blog.git && \
+          rm -r blog/.git && bower install && cd ../..
+    - script:
         name: install surge
         code: |
           npm install -g surge && cp .surgeignore build/unbundled
