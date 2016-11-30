@@ -5,7 +5,7 @@ build:
     - script:
         name: node dependencies
         code: |
-          npm install -g bower surge
+          npm install -g bower
     - script:
         name: bower install
         code: |
@@ -20,6 +20,10 @@ build:
           xvfb-run npm test
 deploy:
   steps:
+    - script:
+        name: install surge
+        code: |
+          npm install -g surge
     - alrayyes/surge-deploy:
         login: 'hplustime@gmail.com'
         directory: "build/unbundled"
