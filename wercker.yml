@@ -9,7 +9,7 @@ build:
     - script:
         name: bower install
         code: |
-          ./node_modules/bower/bin/bower install --allow-root --config.interactive=false
+          bower install --allow-root --config.interactive=false
     - script:
         name: gulp install
         code: |
