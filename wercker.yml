@@ -22,6 +22,6 @@ deploy:
   steps:
     - alrayyes/surge-deploy:
         login: 'hplustime@gmail.com'
-        directory: "public"
+        directory: "build/unbundled"
         token: $SURGE_TOKEN
         domain: "hplustime.com"
