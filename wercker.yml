@@ -23,7 +23,7 @@ deploy:
     - script:
         name: install surge
         code: |
-          npm install -g surge
+          npm install -g surge && cp .surgeignore build/unbundled
     - alrayyes/surge-deploy:
         login: 'hplustime@gmail.com'
         directory: "build/unbundled"
