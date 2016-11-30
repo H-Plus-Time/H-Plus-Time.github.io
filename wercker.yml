@@ -3,6 +3,10 @@ build:
   steps:
     - npm-install
     - script:
+        name: node dependencies
+        code: |
+          npm install -g bower surge
+    - script:
         name: bower install
         code: |
           ./node_modules/bower/bin/bower install --allow-root --config.interactive=false
@@ -16,7 +20,8 @@ build:
           xvfb-run npm test
 deploy:
   steps:
-    - leipert/git-push:
-        branch: master
-        gh_oauth: $GITHUB_TOKEN
-        basedir: build/unbundled
+    - alrayyes/surge-deploy:
+        login: 'hplustime@gmail.com'
+        directory: "public"
+        token: $SURGE_TOKEN
+        domain: "hplustime.com"
