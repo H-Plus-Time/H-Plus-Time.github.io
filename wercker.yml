@@ -26,7 +26,7 @@ deploy:
     - script:
         name: clone posts
         code: |
-          cd build/bundled && git clone https://github.com/H-Plus-Time/blog.git && \
+          cd build/unbundled && git clone https://github.com/H-Plus-Time/blog.git && \
           rm -r blog/.git && bower install --allow-root && cd ../..
     - script:
         name: install surge
