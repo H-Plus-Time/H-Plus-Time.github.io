@@ -28,9 +28,8 @@ deploy:
     - script:
         name: install surge
         code: |
-          npm install -g surge && cp .surgeignore build/unbundled
-    - alrayyes/surge-deploy:
-        login: 'hplustime@gmail.com'
-        directory: "build/unbundled"
-        token: $SURGE_TOKEN
-        domain: "hplustime.com"
+          npm install -g surge
+    - script:
+        name: push to surge domain
+        code: |
+        surge build/unbundled hplustime.com --token $SURGE_TOKEN
