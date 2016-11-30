@@ -21,10 +21,13 @@ build:
 deploy:
   steps:
     - script:
+        name: install bower
+        code: npm install -g bower
+    - script:
         name: clone posts
         code: |
           cd build/bundled && git clone https://github.com/H-Plus-Time/blog.git && \
-          rm -r blog/.git && bower install && cd ../..
+          rm -r blog/.git && bower install --allow-root && cd ../..
     - script:
         name: install surge
         code: |
