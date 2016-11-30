@@ -43,7 +43,8 @@
           var hrefString = link.text.match(linkRegex)[0];
           var hrefChunks = hrefString.split('"').length != 0 ? hrefString.split('"') : hrefString.split("'");
           console.log(hrefChunks[1])
-          var resolvedPageUrl = this.resolveUrl(hrefChunks[1]);
+          var resolvedPageUrl = this.resolveUrl("/blog/bower_components/"+hrefChunks[1]);
+          console.log(resolvedPageUrl);
           this.importHref(resolvedPageUrl, null, null, true);
         })
       }
