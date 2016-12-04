@@ -39,6 +39,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
     paper-card {
       display:block;
+      padding:10px;
+      margin:5px;
     }
     h1 {
       margin-bottom:0;
@@ -96,7 +98,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <edu-chip data="[[item]]"></edu-chip>
       </template>
     </paper-card>
-    <br />
     <paper-card heading="Skills">
       <template is="dom-repeat" items="[[resume.skills.sets]]">
         <skill-chip data="[[item]]"></skill-chip>
