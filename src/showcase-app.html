@@ -111,6 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background:white;
       }
       .back-nav {
+        border-radius:50%;
         @apply(--shadow-elevation-2dp);
       }
     </style>
@@ -130,8 +131,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       exit-animation="fade-out-animation"
       opened$="[[fullscreenPortfolio]]">
       <div>
-        <paper-button toggles class="back-nav"
-          active="{{fullscreenPortfolio}}">Back</paper-button>
+        <paper-icon-button toggles class="back-nav" icon="arrow-back"
+          active="{{fullscreenPortfolio}}">Back</paper-icon-button>
       </div>
       <h2>[[portfolio.name]]</h2>
       <div>

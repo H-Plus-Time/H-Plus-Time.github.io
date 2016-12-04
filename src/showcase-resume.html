@@ -58,6 +58,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .caps {
       text-transform:uppercase;
     }
+    .raise-on-hover {
+      border-radius:50%;
+    }
+    .raise-on-hover:hover {
+      @apply(--shadow-elevation-2dp);
+    }
   </style>
 
   <iron-ajax auto
@@ -74,15 +80,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <div class="horizontal layout center">
     <iron-icon icon="communication:email"></iron-icon><h3>[[resume.contact.email]]</h3>
   </div>
-  <h3>[[resume.contact.phone]]</h3>
-  <h3 class="caps">Profiles</h3>
   <div class="horizontal layout center profiles">
-    <a href="https://twitter.com/H-Plus-Time">
-      <paper-icon-button icon="fa:twitter" style="color:skyblue">
+    <a href="https://twitter.com/H-Plus-Time" tabindex="-1">
+      <paper-icon-button icon="fa:twitter" class="raise-on-hover"
+        style="color:skyblue">
       </paper-icon-button>
     </a>
-    <a href="https://github.com/H_Plus_Time">
-      <paper-icon-button icon="fa:github">
+    <a href="https://github.com/H_Plus_Time" tabindex="-1">
+      <paper-icon-button icon="fa:github" class="raise-on-hover"
+        style="color:black">
       </paper-icon-button>
     </a>
 
