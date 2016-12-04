@@ -19,11 +19,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
 
 <dom-module id="showcase-app">
   <template>
@@ -32,11 +35,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-primary-color: #eee;
         --app-secondary-color: black;
         --app-accent-color:#536DFE;
+        --app-tertiary-color: grey;
         display: block;
       }
 
       app-header {
-        color: grey;
+        color: var(--app-tertiary-color);
         background-color: var(--app-primary-color);
       }
       app-header paper-icon-button {
@@ -93,6 +97,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-pages {
         height:calc(100% - 128px);
       }
+      .fullscreen {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+        width:100vw;
+        height:100vh;
+        margin:0 !important;
+      }
+      .portfolio-card {
+        background:white;
+      }
+      .back-nav {
+        @apply(--shadow-elevation-2dp);
+      }
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
     <app-location route="{{route}}"
@@ -105,6 +125,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
+    <paper-dialog class="fullscreen portfolio-card"
+      entry-animation="scale-up-animation"
+      exit-animation="fade-out-animation"
+      opened$="[[fullscreenPortfolio]]">
+      <div>
+        <paper-button toggles class="back-nav"
+          active="{{fullscreenPortfolio}}">Back</paper-button>
+      </div>
+      <h2>[[portfolio.name]]</h2>
+      <div>
+
+      </div>
+    </paper-dialog>
     <app-drawer-layout fullbleed force-narrow>
       <!-- Drawer content -->
       <app-drawer>
@@ -148,7 +181,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <showcase-home name="home"></showcase-home>
-          <showcase-portfolio name="portfolio"></showcase-portfolio>
+          <showcase-portfolio name="portfolio"
+            on-expand-portfolio-card="toggleFSPortfolio"></showcase-portfolio>
           <showcase-resume name="resume"></showcase-resume>
           <showcase-blog name="blog"></showcase-blog>
           <showcase-view404 name="view404"></showcase-view404>
@@ -167,6 +201,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           reflectToAttribute: true,
           observer: '_pageChanged'
         },
+
         menuItems: {
           type: Array,
           value: _ => (
@@ -178,9 +213,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             ]
           )
         },
+
         smallScreen: {
           type: Boolean,
           notify: true,
+          value: _ => false
+        },
+
+        fullscreenPortfolio: {
+          type: Boolean,
           value: _ => false
         }
       },
@@ -190,22 +231,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _ensureHardNav(page) {
-        console.log(page);
       },
       _routePageChanged: function(page) {
-        console.log("Hola")
         this.page = page || 'home';
       },
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        console.log(page);
         var resolvedPageUrl = this.resolveUrl('showcase-' + page + '.html');
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
       },
 
       _showPage404: function() {
         this.page = 'view404';
+      },
+
+      toggleFSPortfolio(e) {
+        this.portfolio = e.detail;
+        this.fullscreenPortfolio = !this.fullscreenPortfolio;
       }
     });
   </script>

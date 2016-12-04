@@ -1,11 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <dom-module id="portfolio-card">
   <template>
     <style include="iron-flex iron-flex-alignment">
       :host {
         display: block;
+        position:relative;
         margin:5px;
       }
       :host > div a div {
@@ -27,8 +29,21 @@
         color:black;
         font-family: 'Roboto', 'Noto', sans-serif;
       }
+      .detail {
+        position:absolute;
+        bottom:0;
+        right:0;
+        border-radius:50%;
+        color:var(--app-tertiary-color);
+      }
+      .detail:hover {
+        @apply(--shadow-elevation-2dp);
+      }
     </style>
     <div on-mouseover="_toggleView" on-mouseout="_toggleView">
+      <paper-icon-button
+        icon="fullscreen" on-tap="_fireExpandCard"
+        class="detail"></paper-icon-button>
       <a href="[[baseUrl]]/[[data.name]]" alt="[[data.name]]">
         <div hidden$="[[_computeMainHidden(hovered, expanded)]]">
           <img src="[[baseUrl]]/[[data.name]]/[[data.logo]]"
@@ -55,6 +70,9 @@
       },
       _toggleView() {
         this.hovered = !this.hovered;
+      },
+      _fireExpandCard(e) {
+        this.dispatchEvent(new CustomEvent('expand-portfolio-card', {detail: this.data, bubbles: true}))
       },
 
       _computeDetailHidden(hovered, expanded) {

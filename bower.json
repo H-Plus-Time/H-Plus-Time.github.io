@@ -23,7 +23,8 @@
     "iron-ajax": "^1.4.3",
     "marked-element": "^1.2.0",
     "iron-list": "^1.3.14",
-    "paper-button": "^1.0.14"
+    "paper-button": "^1.0.14",
+    "paper-dialog": "^1.1.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

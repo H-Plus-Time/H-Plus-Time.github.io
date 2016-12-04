@@ -23,6 +23,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         justify-content:center;
         flex-wrap:wrap;
       }
+      .fullscreen {
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        z-index:2 !important;
+        background:white;
+      }
     </style>
     <iron-ajax auto
       url="/data/portfolio.json"
@@ -30,13 +39,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       last-response="{{data}}">
     </iron-ajax>
     <template is="dom-repeat" items="[[data]]">
-      <portfolio-card base-url="https://h-plus-time.github.io" data="[[item]]"></portfolio-card>
+      <portfolio-card
+        base-url="https://h-plus-time.github.io"
+        data="[[item]]"></portfolio-card>
     </template>
   </template>
 
   <script>
     Polymer({
       is: 'showcase-portfolio'
+
     });
   </script>
 </dom-module>
