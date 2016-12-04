@@ -1,0 +1,199 @@
+{
+
+  "name": "Nicholas J. Roberts",
+
+  "meta": {
+    "format": "FRESH@0.6.0",
+    "version": "0.4.0"
+  },
+
+  "info": {
+    "label": "Developer",
+    "characterClass": "Programmer"
+  },
+
+  "contact": {
+    "email": "nicholas.roberts.au@gmail.com"
+  },
+
+  "projects": [
+    {
+      "title": "CXS Controlroom",
+      "category": "foss",
+      "role": "co-creator",
+      "url": "h-plus-time.github.io/cxs-controlroom",
+      "repo": "https://github.com/H-Plus-Time/cxs-controlroom.git",
+      "description": "",
+      "start": "2016-11",
+      "summary": "",
+      "keywords": ["Autobahn", "Polymer", "control systems"]
+    },
+    {
+      "title": "Morgana",
+      "category": "foss",
+      "role": "Front-end developer",
+      "url": "h-plus-time.github.io/Morgana",
+      "repo": "https://github.com/GFA-RDIP/Morgana.git",
+      "description": "",
+      "start": "2016-10",
+      "summary": "",
+      "keywords": ["Polymer", "data visualization", "networks", "health"]
+    },
+    {
+      "title": "Augmented Melbourne",
+      "category": "foss",
+      "role": "co-creator",
+      "url": "http://project.website.com",
+      "repo": "http://github.com/H-Plus-Time/augmented-melbourne.git",
+      "description": "An augmented reality navigation web app.",
+      "start": "2016-07",
+      "summary": "Performed flagship product conceptualization and development.",
+      "keywords": ["Android", "Polymer"]
+    },
+    {
+      "title": "Zeitgeist",
+      "category": "foss",
+      "role": "creator",
+      "url": "http://h-plus-time.github.io/zeitgeist-front",
+      "repo": "https://github.com/H-Plus-Time/augmented-melbourne.git",
+      "description": "",
+      "start": "2016-09",
+      "summary": "",
+      "keywords": ["Polymer", "golang", "pubmed"]
+    }
+  ],
+
+  "social": [
+
+    {
+      "label": "GitHub",
+      "network": "GitHub",
+      "user": "H-Plus-Time",
+      "url": "https://github.com/H-Plus-Time"
+    },
+
+    {
+      "label": "Twitter",
+      "network": "Twitter",
+      "user": "H-Plus-Time",
+      "url": "https://twitter.com/H_Plus_Time"
+    }
+  ],
+
+  "education": {
+
+    "summary": "",
+    "studyType": "test",
+    "level": "degree",
+
+    "degree": "BCompSci",
+
+    "history": [
+
+      {
+        "institution": "RMIT University",
+        "title": "Bachelor of Computer Science",
+        "url": "https://www.rmit.edu.au/",
+        "start": "2014-07",
+        "end": "2017-02",
+        "summary": "A multiline summary of the education.",
+        "curriculum": ["Algorithms and Analysis", "Web Database Applications"]
+      },
+      {
+        "institution": "La Trobe University",
+        "title": "Bachelor of Nanotechnology (Hons)/Masters of Nanotechnology",
+        "url": "https://latrobe.edu.au",
+        "start": "2012-02",
+        "end": "2014-06",
+        "curriculum": ["Imaging and Materials Characterisation", "Modern Physics", "Linear Algebra"]
+      }
+    ]
+
+  },
+  "volunteer": {
+    "history": [
+      {"title": "HealthHack 2016 | Melbourne",
+        "role": "co-organiser",
+        "description": "",
+        "start": "2016-06",
+        "end": "2016-11"
+      }
+    ]
+  },
+
+  "skills": {
+
+    "sets": [
+      {
+        "name": "Web Development",
+        "level": "intermediate",
+        "skills": [
+          "ES6", "HTML 5", "Polymer", "Redux", "Ramda", "Gulp.js", "d3", "Preact"
+        ]
+      },
+      {
+        "name": "Backend",
+        "level": "intermediate",
+        "skills": [
+          "Node.js", "Golang", "Express", "ZeroMQ", "Python"
+        ]
+      },
+      {
+        "name": "Database",
+        "level": "intermediate",
+        "skills": [
+          "MySQL", "Tinkerpop", "NoSQL", "CouchDB", "MongoDB", "Neo4j", "Cassandra"
+        ]
+      },
+      {
+        "name": "Project",
+        "level": "beginner",
+        "skills": [
+          "Agile", "Git", "CI/CD"
+        ]
+      }
+    ]
+  },
+
+  "recognition": [
+    {
+      "flavor": "award",
+      "title": "1st Prize",
+      "event": "HealthHack | Melbourne",
+      "url": "healthhack.com.au",
+      "date": "2016-10-16",
+      "summary": "Morgana - data visualization for co-occurence association networks"
+    },
+    {
+      "flavor": "award",
+      "title": "Victorian Government Data Challenge - Winner",
+      "event": "GovHack 2015",
+      "url": "govhack.org",
+      "date": "2015-07-31",
+      "summary": "Path to Safety"
+    },
+    {
+      "flavor": "award",
+      "title": "Victorian Government Data Challenge - Honourable mention",
+      "event": "GovHack 2015",
+      "url": "govhack.org",
+      "date": "2015-07-31",
+      "summary": "Greening Space Melbourne"
+    },
+    {
+      "flavor": "award",
+      "title": "City of Melbourne Challenge - Winner",
+      "event": "GovHack 2015",
+      "url": "govhack.org",
+      "date": "2015-07-31",
+      "summary": "Greening Space Melbourne"
+    }
+  ],
+
+  "affiliation": {
+    "summary": "",
+    "history": [
+    ]
+  }
+
+}

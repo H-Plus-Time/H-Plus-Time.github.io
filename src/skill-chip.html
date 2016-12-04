@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="skill-chip">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+        padding-left:10px;
+      }
+      .chip {
+        /*border-radius:5px;*/
+        background: var(--app-primary-color);
+        padding:5px;
+        margin:0 2px;
+        color:var(--accent-contrast-color);
+      }
+    </style>
+    <h3>[[data.name]]</h3>
+    <div class="horizontal layout">
+      <template is="dom-repeat" items="[[data.skills]]">
+        <div class="chip">
+          [[item]]
+        </div>
+      </template>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'skill-chip',
+
+    });
+  </script>
+</dom-module>

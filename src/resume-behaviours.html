@@ -1,0 +1,12 @@
+<script src="../bower_components/moment/min/moment.min.js"></script>
+<script>
+  Resume = window.Resume || {}
+  Resume = {
+    humanizeDate: (date) => {
+      return moment(date).format("MMM, YYYY")
+    },
+    humanizeDateFull: (date) => {
+      return moment(date).format("D MMM, YYYY")
+    }
+  }
+</script>

@@ -1,0 +1,26 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="resume-behaviours.html" />
+<dom-module id="volunteer-chip">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding-left:10px;
+      }
+    </style>
+    <h3>[[data.title]] | [[data.role]]</h3>
+    <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+    <p>
+      [[data.description]]
+    </p>
+  </template>
+  <script>
+    Polymer({
+      is: 'volunteer-chip',
+      behaviours: [
+        Resume
+      ],
+      _humanize: Resume.humanizeDate
+    });
+  </script>
+</dom-module>

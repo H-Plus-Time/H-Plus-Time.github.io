@@ -1,0 +1,23 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="resume-behaviours.html" />
+<dom-module id="accolade-chip">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding-left:10px;
+      }
+    </style>
+    <h3>[[data.event]] | [[_humanize(data.date)]]</h3>
+    <h3 class="nomargin">[[data.title]]</h3>
+  </template>
+  <script>
+    Polymer({
+      is: 'accolade-chip',
+      behaviours: [
+        Resume
+      ],
+      _humanize: Resume.humanizeDateFull
+    });
+  </script>
+</dom-module>
