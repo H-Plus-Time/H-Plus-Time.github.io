@@ -15,14 +15,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style include="shared-styles">
       :host {
-        display: block;
-
+        display: flex;
+        max-width:1280px;
         padding: 10px;
+        margin:auto;
+      }
+      .main {
+        flex:1;
+        background:white;
+        height:100%;
+        padding:15px;
       }
     </style>
 
-    <div class="card">
-      Under construction
+    <div class="main">
+      <p>
+        Hi, you've reached the personal website of Nicholas Roberts, a Melbourne, Australia based Computer Science student (anticipated Feb '17).
+      </p>
+      This is no ordinary personal website, as you may have noticed by the hints of app-like behaviour (read: poorly concealed self-promotion). Open up Chrome Dev Tools (or Web Console, if you're running Firefox) to poke around the salient features, namely:
+      <ul>
+        <li>
+          Service worker - background syncs, push notifications. Mainly used for robust resource caching here.
+        </li>
+        <li>
+          WebComponents (Polymer sugared) - standards-track UI components, sans-transpilation.
+        </li>
+        <!-- <li>
+          HTTP/2 server push - does what it says on the tin, pitfalls (i.e. unprompted extra bandwidth usage) neatly avoided via service worker request interception.
+        </li> -->
+        <li>
+          AppCache automatic fallback - all credit to surge.sh.
+        </li>
+        <li>
+          Lazy-loaded resources - defers work until after users have engaged.
+        </li>
+        <li>
+          Precisely <b>zero</b> webfonts - and zero kB to download them ;).
+        </li>
+      </ul>
+      Finally, the source code for this website is available at <a href="https://github.com/H-Plus-Time/hplustime.com">GitHub</a>
     </div>
   </template>
 
