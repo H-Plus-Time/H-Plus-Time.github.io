@@ -1,4 +1,4 @@
-box: markadams/chromium-xvfb-js
+box: justinribeiro/lighthouse
 build:
   steps:
     - script:
@@ -21,10 +21,6 @@ build:
         name: gulp
         code: |
           gulp
-    - script:
-        name: npm test
-        code: |
-          xvfb-run npm test
 deploy:
   steps:
     - script:
@@ -43,17 +39,11 @@ deploy:
         name: push to surge domain
         code: surge build/unbundled hplustime.com --token $SURGE_TOKEN
 post_deploy:
-  steps:
     - script:
-        name: install lighthouse
-        code: npm install -g yarn && yarn global add lighthouse
-    - script:
-        name: lighthouse audit
+        name: npm test
         code: |
-          export DISPLAY=:1.5 && \
-          TMP_PROFILE_DIR=$(mktemp -d -t lighthouse.XXXXXXXXXX) && \
-          xvfb-run --server-args='-screen 0, 1024x768x16' chromium-browser  --user-data-dir=$TMP_PROFILE_DIR --start-maximized --no-first-run --remote-debugging-port=9222 "about:blank" && \
-          mkdir report && cp README.md report && \
+          mkdir report && cp README.md report
+          headless_shell --no-sandbox --remote-debugging-port=9222 &>1 &
           lighthouse https://hplustime.com --output json --output-path=report/lighthouse_results.json
     - leipert/git-push:
         branch: report
