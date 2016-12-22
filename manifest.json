@@ -1,6 +1,6 @@
 {
   "name": "Hydrogen Plus Time",
-  "short_name": "Hydrogen Plus Time",
+  "short_name": "H+Time",
   "start_url": "/?homescreen=1",
   "display": "standalone",
   "theme_color": "rgb(235, 168, 67)",

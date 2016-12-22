@@ -89,14 +89,19 @@
     "degree": "BCompSci",
 
     "history": [
-
+      {
+        "institution": "RMIT University",
+        "title": "Bachelor of Science (Dean's Scholar)(Hons)",
+        "url": "https://www.rmit.edu.au",
+        "start": "2017-02",
+        "end": "2019-11"
+      },
       {
         "institution": "RMIT University",
         "title": "Bachelor of Computer Science",
         "url": "https://www.rmit.edu.au/",
         "start": "2014-07",
         "end": "2017-02",
-        "summary": "A multiline summary of the education.",
         "curriculum": ["Algorithms and Analysis", "Web Database Applications"]
       },
       {
