@@ -12,23 +12,19 @@ build:
     - script:
         name: install dependencies
         code: |
-          HOME=$YARN_CACHE yarn global add bower gulp-cli && yarn
+          HOME=$YARN_CACHE yarn && yarn global add bower gulp-cli
     - script:
         name: bower install
         code: |
           bower install --allow-root --config.interactive=false
     - script:
-        name: gulp install
+        name: gulp
         code: |
           gulp
     - script:
         name: npm test
         code: |
           xvfb-run npm test
-    - script:
-        name: cleanup dev deps
-        code: |
-          HOME=$YARN_CACHE yarn --prod
 
 deploy:
   steps:
