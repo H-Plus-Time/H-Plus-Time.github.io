@@ -40,7 +40,7 @@ deploy:
         code: surge build/unbundled hplustime.com --token $SURGE_TOKEN
 post_deploy:
     - script:
-        name: npm test
+        name: lighthouse audit
         code: |
           mkdir report && cp README.md report
           headless_shell --no-sandbox --remote-debugging-port=9222 &>1 &
