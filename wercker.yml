@@ -47,7 +47,7 @@ post_deploy:
   steps:
     - script:
         name: install lighthouse
-        code: yarn global add lighthouse
+        code: npm install -g yarn && yarn global add lighthouse
     - script:
         name: lighthouse audit
         code: |
