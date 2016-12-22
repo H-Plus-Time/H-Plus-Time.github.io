@@ -50,3 +50,4 @@ post_deploy:
         branch: report
         gh_oauth: $GITHUB_TOKEN
         basedir: report
+        clean_removed_files: true
