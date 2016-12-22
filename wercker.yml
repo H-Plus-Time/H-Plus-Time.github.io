@@ -2,9 +2,9 @@ box: justinribeiro/lighthouse
 build:
   steps:
     - script:
-        name: install yarn
+        name: install yarn, git
         code: |
-          npm install -g yarn
+          apt-get update && apt-get install -y git && npm install -g yarn
     - script:
         name: set yarn cache
         code: |
