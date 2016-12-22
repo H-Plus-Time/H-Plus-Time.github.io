@@ -25,7 +25,6 @@ build:
         name: npm test
         code: |
           xvfb-run npm test
-          rm /tmp/.X99-lock
 deploy:
   steps:
     - script:
@@ -51,9 +50,9 @@ post_deploy:
     - script:
         name: lighthouse audit
         code: |
-          export DISPLAY=:1.5
-          TMP_PROFILE_DIR=$(mktemp -d -t lighthouse.XXXXXXXXXX)
-          xvfb-run --server-args='-screen 0, 1024x768x16' chromium-browser  --user-data-dir=$TMP_PROFILE_DIR --start-maximized --no-first-run --remote-debugging-port=9222 "about:blank"
+          export DISPLAY=:1.5 && \
+          TMP_PROFILE_DIR=$(mktemp -d -t lighthouse.XXXXXXXXXX) && \
+          xvfb-run --server-args='-screen 0, 1024x768x16' chromium-browser  --user-data-dir=$TMP_PROFILE_DIR --start-maximized --no-first-run --remote-debugging-port=9222 "about:blank" && \
           mkdir report && cp README.md report && \
           lighthouse https://hplustime.com --output json --output-path=report/lighthouse_results.json
     - leipert/git-push:
