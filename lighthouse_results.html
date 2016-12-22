@@ -1,0 +1,173 @@
+
+
+[1mLighthouse (1.1.6) results:[0m https://hplustime.com/
+
+▫ [1mProgressive Web App[0m
+
+[1mApp can load on offline/flaky connections[0m: [33m67%[0m
+ ── [32m✓[0m Has a registered Service Worker
+ ── [32m✓[0m URL responds with a 200 when offline
+ ── [31m✘[0m Cache contains start_url from manifest (alpha)
+
+[1mPage load performance is fast[0m: [32m99%[0m
+ ── [32m99[0m First meaningful paint ([1m1261.1ms[0m)
+ ── [32m100[0m Speed Index ([1m616[0m)
+    - First Visual Change: 136ms
+    - Last Visual Change: 1976ms
+ ── [32m100[0m Estimated Input Latency ([1m17.1ms[0m)
+    - 90% probability of input latency at 17.1ms or shorter.
+      (50%: 16.0ms, 75%: 16.0ms, 90%: 17.1ms, 99%: 105.4ms, 100%: 129.0ms)
+ ── [32m97[0m Time To Interactive (alpha) ([1m1667.9ms[0m)
+
+[1mSite is progressively enhanced[0m: [32m100%[0m
+ ── [32m✓[0m Page contains some content when its scripts are not available
+
+[1mNetwork connection is secure[0m: [32m100%[0m
+ ── [32m✓[0m Site is on HTTPS
+ ── [32m✓[0m Site redirects HTTP traffic to HTTPS
+
+[1mUser can be prompted to Add to Homescreen[0m: [32m100%[0m
+ ── [32m✓[0m Has a registered Service Worker
+ ── [32m✓[0m Manifest exists
+ ── [32m✓[0m Manifest contains start_url
+ ── [32m✓[0m Manifest contains icons at least 144px
+    Found icons of sizes: 192x192,512x512
+ ── [32m✓[0m Manifest contains short_name
+
+[1mInstalled web app will launch with custom splash screen[0m: [32m100%[0m
+ ── [32m✓[0m Manifest exists
+ ── [32m✓[0m Manifest contains name
+ ── [32m✓[0m Manifest contains background_color
+ ── [32m✓[0m Manifest contains theme_color
+ ── [32m✓[0m Manifest contains icons at least 192px
+    Found icons of sizes: 192x192,512x512
+
+[1mAddress bar matches brand colors[0m: [32m100%[0m
+ ── [32m✓[0m Manifest exists
+ ── [32m✓[0m HTML has a theme-color <meta> ([1mrgb(235, 168, 67)[0m)
+ ── [32m✓[0m Manifest contains theme_color
+
+[1mDesign is mobile-friendly[0m: [32m100%[0m
+ ── [32m✓[0m HTML has a viewport <meta>
+ ── [32m✓[0m Content is sized correctly for the viewport
+
+▫ [1mBest Practices[0m
+
+ ── [32m✓[0m Element aria-* roles are valid
+ ── [32m✓[0m Element aria-* attributes are valid ARIA attributes
+ ── [32m✓[0m Background and foreground colors have a sufficient contrast ratio
+ ── [32m✓[0m Every image element has an alt attribute
+ ── [32m✓[0m Every form element has a label
+ ── [32m✓[0m Manifest's short_name won't be truncated when displayed on homescreen
+ ── [32m✓[0m Manifest's display property is set ([1mstandalone[0m)
+    Manifest display property should be set.
+
+▫ [1mPerformance Metrics[0m
+
+ ── [32m96[0m Critical Request Chains
+    - Longest request chain (shorter is better): 3
+    - Longest chain duration (shorter is better): 1962.13ms
+    - Longest chain transfer size (smaller is better): 33.23KB
+    - Initial navigation
+      ┣━┳ / (hplustime.com)
+      ┃ ┣━━ src/showcase-app.html (hplustime.com) - 194.82ms, 3.09KB
+      ┃ ┣━━ app-scroll-effects/app-scroll-effects.html (hplustime.com) - 292.63ms, 1.46KB
+      ┃ ┣━━ app-drawer-layout/app-drawer-layout.html (hplustime.com) - 293.89ms, 2.30KB
+      ┃ ┣━━ app-drawer/app-drawer.html (hplustime.com) - 294.92ms, 3.87KB
+      ┃ ┣━━ app-header/app-header.html (hplustime.com) - 301.09ms, 3.35KB
+      ┃ ┣━━ paper-tabs/paper-tabs.html (hplustime.com) - 307.13ms, 3.86KB
+      ┃ ┣━━ effects/parallax-background.html (hplustime.com) - 395.62ms, 1.73KB
+      ┃ ┣━━ effects/resize-snapped-title.html (hplustime.com) - 396.02ms, 1.75KB
+      ┃ ┣━━ effects/fade-background.html (hplustime.com) - 401.77ms, 1.72KB
+      ┃ ┣━━ app-scroll-effects/app-scroll-effects-behavior.html (hplustime.com) - 402.50ms, 2.30KB
+      ┃ ┣━━ effects/blend-background.html (hplustime.com) - 409.25ms, 1.65KB
+      ┃ ┣━━ manifest/icon-192x192.png (hplustime.com) - 432.91ms, 8.11KB
+      ┃ ┣━┳ polymer/polymer.html (hplustime.com)
+      ┃ ┃ ┗━━ src/showcase-home.html (hplustime.com) - 1760.06ms, 35.38KB
+      ┃ ┣━━ helpers/helpers.html (hplustime.com) - 495.65ms, 1.92KB
+      ┃ ┣━━ polymer/polymer-mini.html (hplustime.com) - 495.82ms, 12.73KB
+      ┃ ┣━━ iron-scroll-target-behavior/iron-scroll-target-behavior.html (hplustime.com) - 496.17ms, 2.00KB
+      ┃ ┣━━ app-header-layout/app-header-layout.html (hplustime.com) - 545.68ms, 2.20KB
+      ┃ ┣━━ paper-dialog/paper-dialog.html (hplustime.com) - 546.06ms, 1.67KB
+      ┃ ┣━━ app-toolbar/app-toolbar.html (hplustime.com) - 546.63ms, 1.71KB
+      ┃ ┣━━ app-route/app-location.html (hplustime.com) - 547.13ms, 1.84KB
+      ┃ ┣━━ iron-selector/iron-selector.html (hplustime.com) - 547.74ms, 1.49KB
+      ┃ ┣━━ iron-pages/iron-pages.html (hplustime.com) - 550.83ms, 1.67KB
+      ┃ ┣━━ neon-animation/neon-animation.html (hplustime.com) - 551.55ms, 1.46KB
+      ┃ ┣━━ iron-media-query/iron-media-query.html (hplustime.com) - 551.94ms, 1.74KB
+      ┃ ┣━━ paper-icon-button/paper-icon-button.html (hplustime.com) - 552.57ms, 2.07KB
+      ┃ ┣━━ iron-flex-layout/iron-flex-layout-classes.html (hplustime.com) - 553.78ms, 3.06KB
+      ┃ ┣━━ app-route/app-route.html (hplustime.com) - 556.96ms, 2.50KB
+      ┃ ┣━━ effects/material.html (hplustime.com) - 616.11ms, 1.55KB
+      ┃ ┣━━ iron-flex-layout/iron-flex-layout.html (hplustime.com) - 619.13ms, 3.37KB
+      ┃ ┣━━ effects/resize-title.html (hplustime.com) - 624.28ms, 1.96KB
+      ┃ ┣━━ iron-resizable-behavior/iron-resizable-behavior.html (hplustime.com) - 625.36ms, 3.27KB
+      ┃ ┣━━ effects/waterfall.html (hplustime.com) - 628.49ms, 1.50KB
+      ┃ ┣━━ paper-styles/color.html (hplustime.com) - 629.50ms, 3.88KB
+      ┃ ┣━━ iron-menu-behavior/iron-menubar-behavior.html (hplustime.com) - 630.97ms, 1.72KB
+      ┃ ┣━━ paper-tabs/paper-tabs-icons.html (hplustime.com) - 634.38ms, 1.54KB
+      ┃ ┣━━ iron-icon/iron-icon.html (hplustime.com) - 637.62ms, 2.07KB
+      ┃ ┣━━ iron-icons/iron-icons.html (hplustime.com) - 637.94ms, 23.88KB
+      ┃ ┗━━ paper-tabs/paper-tab.html (hplustime.com) - 644.29ms, 2.13KB
+      ┣━━ polymer/polymer-micro.html (hplustime.com) - 590.15ms, 5.04KB
+      ┣━━ neon-animation/neon-animation-runner-behavior.html (hplustime.com) - 645.70ms, 0.75KB
+      ┣━━ paper-dialog-behavior/paper-dialog-shared-styles.html (hplustime.com) - 645.85ms, 0.50KB
+      ┣━━ paper-dialog-behavior/paper-dialog-behavior.html (hplustime.com) - 649.42ms, 0.62KB
+      ┣━━ iron-selector/iron-selectable.html (hplustime.com) - 654.89ms, 1.31KB
+      ┣━━ iron-location/iron-query-params.html (hplustime.com) - 656.39ms, 0.58KB
+      ┣━━ neon-animation/neon-animation-behavior.html (hplustime.com) - 687.01ms, 0.45KB
+      ┣━━ neon-animation/neon-animated-pages.html (hplustime.com) - 688.83ms, 1.03KB
+      ┣━━ neon-animation/neon-shared-element-animation-behavior.html (hplustime.com) - 691.25ms, 0.43KB
+      ┣━━ app-route/app-route-converter-behavior.html (hplustime.com) - 691.69ms, 0.41KB
+      ┣━━ iron-selector/iron-multi-selectable.html (hplustime.com) - 692.13ms, 0.73KB
+      ┣━━ iron-location/iron-location.html (hplustime.com) - 698.45ms, 1.23KB
+      ┣━━ neon-animation/neon-animatable.html (hplustime.com) - 698.85ms, 0.31KB
+      ┣━━ neon-animation/neon-animatable-behavior.html (hplustime.com) - 699.21ms, 0.66KB
+      ┣━━ neon-animation/neon-animations.html (hplustime.com) - 700.55ms, 0.26KB
+      ┣━━ animations/hero-animation.html (hplustime.com) - 1330.11ms, 0.53KB
+      ┣━━ animations/cascaded-animation.html (hplustime.com) - 1332.25ms, 0.50KB
+      ┣━━ iron-iconset-svg/iron-iconset-svg.html (hplustime.com) - 1333.18ms, 1.00KB
+      ┣━━ animations/opaque-animation.html (hplustime.com) - 1334.36ms, 0.35KB
+      ┣━━ iron-behaviors/iron-button-state.html (hplustime.com) - 1335.62ms, 1.86KB
+      ┣━━ paper-styles/shadow.html (hplustime.com) - 1335.79ms, 0.77KB
+      ┣━━ iron-menu-behavior/iron-menu-behavior.html (hplustime.com) - 1335.92ms, 1.48KB
+      ┣━━ neon-animation/neon-shared-element-animatable-behavior.html (hplustime.com) - 1337.13ms, 0.26KB
+      ┣━━ iron-overlay-behavior/iron-overlay-behavior.html (hplustime.com) - 1340.90ms, 1.69KB
+      ┣━━ animations/scale-up-animation.html (hplustime.com) - 1341.58ms, 0.40KB
+      ┣━━ paper-behaviors/paper-ripple-behavior.html (hplustime.com) - 1344.81ms, 1.46KB
+      ┣━━ iron-meta/iron-meta.html (hplustime.com) - 1345.43ms, 2.23KB
+      ┣━━ animations/reverse-ripple-animation.html (hplustime.com) - 1347.65ms, 0.65KB
+      ┣━━ animations/scale-down-animation.html (hplustime.com) - 1350.54ms, 0.39KB
+      ┣━━ animations/fade-out-animation.html (hplustime.com) - 1377.70ms, 0.33KB
+      ┣━━ iron-selector/iron-selection.html (hplustime.com) - 1403.71ms, 0.45KB
+      ┣━━ paper-behaviors/paper-inky-focus-behavior.html (hplustime.com) - 1428.66ms, 0.76KB
+      ┣━━ animations/slide-from-left-animation.html (hplustime.com) - 1435.24ms, 0.38KB
+      ┣━━ paper-styles/typography.html (hplustime.com) - 1457.00ms, 0.94KB
+      ┣━━ iron-behaviors/iron-control-state.html (hplustime.com) - 1458.09ms, 1.24KB
+      ┣━━ animations/slide-from-bottom-animation.html (hplustime.com) - 1461.85ms, 0.38KB
+      ┣━━ animations/slide-down-animation.html (hplustime.com) - 1462.27ms, 0.37KB
+      ┣━━ iron-overlay-behavior/iron-overlay-manager.html (hplustime.com) - 1463.85ms, 1.21KB
+      ┣━━ animations/fade-in-animation.html (hplustime.com) - 1471.13ms, 0.32KB
+      ┣━━ animations/slide-left-animation.html (hplustime.com) - 1473.67ms, 0.38KB
+      ┣━━ animations/slide-from-top-animation.html (hplustime.com) - 1478.08ms, 0.38KB
+      ┣━━ animations/slide-right-animation.html (hplustime.com) - 1479.43ms, 0.38KB
+      ┣━━ animations/ripple-animation.html (hplustime.com) - 1529.31ms, 0.62KB
+      ┣━━ iron-overlay-behavior/iron-focusables-helper.html (hplustime.com) - 1530.24ms, 0.92KB
+      ┣━━ iron-fit-behavior/iron-fit-behavior.html (hplustime.com) - 1531.50ms, 2.23KB
+      ┣━━ iron-a11y-keys-behavior/iron-a11y-keys-behavior.html (hplustime.com) - 1531.75ms, 4.59KB
+      ┣━━ paper-styles/default-theme.html (hplustime.com) - 1533.44ms, 1.00KB
+      ┣━━ animations/slide-from-right-animation.html (hplustime.com) - 1545.24ms, 0.38KB
+      ┣━━ animations/slide-up-animation.html (hplustime.com) - 1545.66ms, 0.39KB
+      ┣━━ neon-animation/web-animations.html (hplustime.com) - 1546.19ms, 0.17KB
+      ┣━━ animations/transform-animation.html (hplustime.com) - 1546.52ms, 0.36KB
+      ┣━━ paper-ripple/paper-ripple.html (hplustime.com) - 1554.57ms, 5.26KB
+      ┣━━ iron-overlay-behavior/iron-overlay-backdrop.html (hplustime.com) - 1578.39ms, 0.79KB
+      ┣━━ font-roboto/roboto.html (hplustime.com) - 1580.38ms, 0.45KB
+      ┣━━ /css (fonts.googleapis.com) - 1717.42ms, 0.90KB
+      ┣━━ /css (fonts.googleapis.com) - 1717.94ms, 1.80KB
+      ┣━━ src/shared-styles.html (hplustime.com) - 1852.83ms, 0.40KB
+      ┗━━ web-animations-js/web-animations-next-lite.min.js (hplustime.com) - 1962.13ms, 14.22KB
+      
+ ── [31m1[0m User Timing marks and measures
+    - mark paintNonDefaultBackgroundColor: 	 time: -326.5ms
+
