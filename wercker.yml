@@ -25,7 +25,7 @@ deploy:
   steps:
     - script:
         name: install bower
-        code: apt-get update && apt-get install git && npm install -g bower
+        code: apt-get update && apt-get install -y git && npm install -g bower
     - script:
         name: clone posts
         code: |
