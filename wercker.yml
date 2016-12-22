@@ -1,11 +1,18 @@
 box: markadams/chromium-xvfb-js
 build:
   steps:
-    - npm-install
     - script:
-        name: node dependencies
+        name: install yarn
         code: |
-          npm install -g bower
+          npm install -g yarn
+    - script:
+        name: set yarn cache
+        code: |
+          export YARN_CACHE=$WERCKER_CACHE_DIR/yarn
+    - script:
+        name: install dependencies
+        code: |
+          HOME=$YARN_CACHE yarn global add bower gulp && yarn
     - script:
         name: bower install
         code: |
@@ -13,11 +20,16 @@ build:
     - script:
         name: gulp install
         code: |
-          npm install -g gulp-cli && gulp
+          gulp
     - script:
         name: npm test
         code: |
           xvfb-run npm test
+    - script:
+        name: cleanup dev deps
+        code: |
+          HOME=$YARN_CACHE yarn --prod
+
 deploy:
   steps:
     - script:
@@ -39,7 +51,7 @@ post_deploy:
   steps:
     - script:
         name: install lighthouse
-        code: npm install -g lighthouse-cli
+        code: yarn global add lighthouse
     - script:
         name: lighthouse audit
         code: |
