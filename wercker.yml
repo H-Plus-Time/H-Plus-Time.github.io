@@ -44,7 +44,7 @@ deploy:
           mkdir report && cp README.md report
           headless_shell --no-sandbox --remote-debugging-port=9222 &>1 &
           lighthouse https://hplustime.com --output json --output-path=report/lighthouse_results.json
-          lighthouse https://hplustime.com --output html --output-path=report/lighthouse_results.html
+          lighthouse https://hplustime.com --output html --output-path=report/index.html
           echo audit.hplustime.com > report/CNAME
     - leipert/git-push:
         branch: report
