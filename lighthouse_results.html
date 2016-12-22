@@ -1,173 +1,3386 @@
+<!--
+
+Copyright 2016 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lighthouse report: https://hplustime.com/</title>
+  <style>
+  /**
+ * Copyright 2016 Google Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin') format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular') format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium') format('woff');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background: #F0F0F0;
+  color: #444;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+
+body {
+  min-width: 845px;
+}
+
+a {
+  color: #57A0A8;
+}
+
+.report {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0 0 4px 4px;
+  max-width: 1280px;
+  background: #FFF;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.26);
+}
+
+.print {
+  width: 24px;
+  height: 24px;
+  background: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNDQ0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xOSA4SDVjLTEuNjYgMC0zIDEuMzQtMyAzdjZoNHY0aDEydi00aDR2LTZjMC0xLjY2LTEuMzQtMy0zLTN6bS0zIDExSDh2LTVoOHY1em0zLTdjLS41NSAwLTEtLjQ1LTEtMXMuNDUtMSAxLTEgMSAuNDUgMSAxLS40NSAxLTEgMXptLTEtOUg2djRoMTJWM3oiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+Cg==');
+  border: none;
+  cursor: pointer;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  margin-right: 26px;
+}
+
+.toggle__label {
+  padding: 0 10px 0 20px;
+}
+
+.toggle__title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.score-container__overall-score {
+  color: #FFF;
+  font-size: 92px;
+  font-weight: 100;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  min-width: 70px;
+}
+
+.score-container__overall-score::after {
+  content: 'Your score';
+  position: absolute;
+  bottom: -4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  opacity: 0.5;
+}
+
+.score-container__max-score {
+  color: #57A0A8;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.report-body {
+  position: relative;
+}
+
+.report-body__content {
+  padding: 0 4% 0 4%;
+  margin-left: 22%;
+  position: relative;
+}
+
+.report-body__menu-container {
+  height: 100%;
+  width: 100%;
+  min-width: 230px;
+  max-width: 1280px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  pointer-events: none;
+}
+
+.menu {
+  width: 22%;
+  background: #FFFFFF;
+  min-width: 185px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  border-right: 1px solid #DFDFDF;
+}
+
+.menu__header {
+  background: #2F3441;
+  padding: 0 20px;
+  height: 115px;
+  line-height: 54px;
+  color: #FFF;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+}
+
+.menu__header::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url('data:image/svg+xml;utf-8,<svg width="86" height="86" viewBox="0 0 86 86" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Beta</title><defs><path id="b" d="M-11.704 13.144H125.58v30H-11.703z"/><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="a"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1"/></filter><path id="d" d="M.4 16.972h119v28.4H.4z"/><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="c"><feGaussianBlur stdDeviation="3.5" in="SourceAlpha" result="shadowBlurInner1"/><feOffset in="shadowBlurInner1" result="shadowOffsetInner1"/><feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.689509737 0" in="shadowInnerInner1"/></filter><text id="f" font-family="Arial-BoldMT, Arial" font-size="13" font-weight="bold" fill="#FFF"><tspan x="37.556" y="34.556">BETA</tspan></text><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="e"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.140964674 0" in="shadowBlurOuter1"/></filter></defs><g fill="none" fill-rule="evenodd"><g mask="url(#mask-2)" transform="rotate(45 55.44 24.523)"><use fill="#000" filter="url(#a)" xlink:href="#b"/><use fill="#CF3A3C" xlink:href="#b"/></g><use filter="url(#c)" xlink:href="#d" mask="url(#mask-2)" transform="rotate(45 58.4 27.55)" fill="#000"/><g mask="url(#mask-2)" transform="rotate(45 52.556 36.435)" fill="#FFF"><use filter="url(#e)" xlink:href="#f"/><use xlink:href="#f"/></g><path d="M8.5-.5l88.204 88.204M8.5-39.5l88.204 88.204" stroke="#FFF" stroke-linecap="square" stroke-dasharray="1,2" opacity=".386" mask="url(#mask-2)" transform="translate(-3)"/></g></svg>') top right no-repeat;
+}
+
+.menu__header-title {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.menu__header-version {
+  opacity: 0.4;
+  color: #fff;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.menu__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__nav-item {
+  height: 40px;
+  line-height: 40px;
+  border-top: 1px solid #EBEBEB;
+}
+
+.menu__link {
+  padding: 0 20px;
+  text-decoration: none;
+  color: #777;
+  display: flex;
+}
+
+.menu__link:hover {
+  background-color: #57A0A8;
+  color: #FFF;
+}
+
+.menu__link-label {
+  flex: 1;
+  color: #49525F;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.menu__link-score {
+  padding-left: 20px;
+}
+
+.menu__link-score--good,
+.report-section__score--good,
+.report-section__item-value--good,
+.report-section__title-score-total--good {
+  color: #76B530;
+}
+
+.menu__link-score--average,
+.report-section__score--average,
+.report-section__item-value--average,
+.report-section__title-score-total--average {
+  color: #F5A623;
+}
+
+.menu__link-score--poor,
+.report-section__score--poor,
+.report-section__item-value--poor,
+.report-section__title-score-total--poor {
+  color: #D0021B;
+}
+
+.menu__link:hover .menu__link-label,
+.menu__link:hover .menu__link-score {
+  color: #FFF;
+}
+
+.report-body__url {
+  font-family: 'Roboto', Arial, sans-serif;
+  white-space: nowrap;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 400;
+  color: #aaa;
+  padding: 20px 0 10px;
+}
+
+.report-body__url a {
+  color: currentColor;
+}
+
+.report-body__breakdown {
+  flex: 1;
+  max-width: 100%;
+}
+
+.report-body__breakdown-item {
+  padding-bottom: 6px;
+}
+
+.report-body__breakdown-item:last-of-type {
+  border: none;
+}
+
+.report-body__header {
+  height: 58px;
+  border-bottom: 1px solid #EBEBEB;
+  background: #FAFAFA;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 4%;
+}
+
+.report-section__title {
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #49525F;
+  display: flex;
+  margin: 0.4em 0 0.3em 0;
+}
+
+.report-section__title-main {
+  flex: 1;
+}
+
+.report-section__title-score-total {
+  font-weight: 500;
+}
+
+.report-section__title-score-max {
+  font-weight: 400;
+  font-size: 18px;
+  margin-left: -4px;
+}
+
+.report-section__subtitle {
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #719EA8;
+  display: flex;
+  margin: 24px 0 16px 0;
+}
+
+.report-section__description {
+  color: #5F6875;
+  font-size: 16px;
+  margin: 0 0 1em 0;
+  line-height: 1.4;
+  max-width: 750px;
+}
+.report-section__description:empty {
+  margin: 0;
+}
+
+.report-section__aggregation-description {
+  font-style: italic;
+  color: #777;
+  font-size: 14px;
+  margin: 0.6em 0 0.8em 0;
+  line-height: 1.4;
+  max-width: 750px;
+}
+
+.report-section__label {
+  flex: 1;
+}
+
+.report-section__individual-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.report-section__item {
+  padding-left: 32px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNXB4IiBoZWlnaHQ9IjVweCIgdmlld0JveD0iMCAwIDUgNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxjaXJjbGUgaWQ9Ik92YWwtNzAiIHN0cm9rZT0ibm9uZSIgZmlsbD0iIzY0NjQ2NCIgZmlsbC1ydWxlPSJldmVub2RkIiBjeD0iMi41IiBjeT0iMi41IiByPSIyLjUiPjwvY2lyY2xlPgo8L3N2Zz4K') 14px 8px no-repeat;
+  line-height: 24px;
+}
+
+.report-section__item-details {
+  display: flex;
+}
+
+.report-section__item-category {
+  font-weight: 700;
+}
+
+.report-section__item-extended-info {
+  font-size: 15px;
+  color: #555;
+  font-style: italic;
+  margin: 0px 0px 16px 24px;
+  max-width: 90%;
+}
+
+.report-section__item-extended-info:empty {
+  margin: 0;
+}
+
+.report-section__item-helptext {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+  padding: 8px 0px 16px 24px;
+  max-width: 90%;
+}
+
+.report-section__item-help-toggle {
+  color: currentColor;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0,0,0.3,1);
+  font-size: 90%;
+  font-weight: 600;
+  margin-left: 8px;
+  vertical-align: top;
+  opacity: 0.6;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.report-section__item-help-toggle:hover {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.7);
+}
+
+.report-section__item-raw-value {
+  color: #777;
+}
+
+.report-section__item-description {
+  flex: 1;
+}
+
+.footer {
+  margin-top: 40px;
+  height: 130px;
+  line-height: 90px;
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid #EBEBEB;
+  color: #999;
+  margin-left: 22%;
+}
+
+.toggle__label {
+  width: 120px;
+  height: 24px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.toggle-view {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.toggle__display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.toggle__display::before,
+.toggle__display::after,
+.toggle__focus-ring {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  line-height: 24px;
+  font-size: 13px;
+  color: #333;
+  transition: opacity 0.2s cubic-bezier(0,0,0.3,1);
+}
+
+.toggle__display::before {
+  content: attr(data-on);
+  opacity: 0;
+  background: #57A0A8;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+  border-radius: 12px;
+  color: #FFF;
+}
+
+.toggle__display::after {
+  content: attr(data-off);
+  opacity: 1;
+  background: #E7E7E8;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+  border-radius: 12px;
+}
+
+.toggle__focus-ring {
+  border-radius: 12px;
+}
+
+.toggle__slider {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+  background: #FFF;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  transition: transform 0.1s cubic-bezier(0,0,0.3,1);
+  z-index: 2;
+}
+
+.toggle-view:focus ~ .toggle__focus-ring,
+.toggle__label:active .toggle__focus-ring {
+  box-shadow: 0 0 5px 2px #83BFFC;
+}
+
+.toggle-view:checked ~ .toggle__display::before {
+  opacity: 1;
+}
+
+.toggle-view:checked ~ .toggle__display::after {
+  opacity: 0;
+}
+
+.toggle-view:checked ~ .toggle__display .toggle__slider {
+  transform: translateX(96px);
+}
+
+.coming-soon, .coming-soon * {
+  color: #AAA;
+}
+
+.coming-soon .report-section__item-value {
+  font-size: 70%;
+}
+
+@media print {
+  .report {
+    box-shadow: none;
+  }
+
+  .report-body__header,
+  .report-body__menu-container {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+<div class="js-report report">
+
+  <section class="report-body">
+    <div class="report-body__header">
+      <div class="toggle">
+        <h1 class="toggle__title">View:</h1>
+
+        <label class="toggle__label" for="user-feature" aria-label="User feature">
+          <input name="view-toggle" class="js-toggle-view toggle-view" id="user-feature" type="checkbox" value="toggle">
+          <div role="presentation" class="toggle__display" data-on="Technology" data-off="User feature">
+            <div aria-hidden class="toggle__slider"></div>
+          </div>
+          <div role="presentation" class="toggle__focus-ring"></div>
+        </label>
+      </div>
+
+      <button class="print js-print"></button>
+    </div>
+    <div class="report-body__content">
+      <div class="report-body__menu-container">
+        <div class="menu">
+          <div class="menu__header">
+            <h1 class="menu__header-title">Lighthouse</h1>
+            <div class="menu__header-version">Version: 1.1.6</div>
+          </div>
+          <ul class="menu__nav">
+            <li class="menu__nav-item">
+              <a class="menu__link" href="#progressive-web app">
+                Progressive Web App
+              </a>
+            </li>
+            <li class="menu__nav-item">
+              <a class="menu__link" href="#best-practices">
+                Best Practices
+              </a>
+            </li>
+            <li class="menu__nav-item">
+              <a class="menu__link" href="#performance-metrics">
+                Performance Metrics
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="report-body__url">Results for <a href="https://hplustime.com/" target="_blank">https://hplustime.com/</a></div>
+
+      <div class="js-breakdown report-body__breakdown">
+        <h1 class="report-section__title" id="progressive-web app">
+          <span class="report-section__title-main">Progressive Web App</span>
+          <span class="report-section__title-score">
+            <span class="report-section__title-score-total report-section__title-score-total--good">96</span>
+            <span class="report-section__title-score-max"> / 100</span>
+          </span>
+        </h1>
+        <p class="report-section__description">These audits validate the aspects of a Progressive Web App.</p>
+
+        <div class="js-report-by-user-feature">
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">App can load on offline/flaky connections</h1>
+
+            <p class="report-section__aggregation-description">Ensuring your web app can respond when the network connection is unavailable or flaky is critical to providing your users a good experience. This is achieved through use of a <a href="https://developers.google.com/web/fundamentals/primers/service-worker/">Service Worker</a>.</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Has a registered Service Worker
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
 
 
-[1mLighthouse (1.1.6) results:[0m https://hplustime.com/
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
 
-▫ [1mProgressive Web App[0m
+                      URL responds with a 200 when offline
 
-[1mApp can load on offline/flaky connections[0m: [33m67%[0m
- ── [32m✓[0m Has a registered Service Worker
- ── [32m✓[0m URL responds with a 200 when offline
- ── [31m✘[0m Cache contains start_url from manifest (alpha)
+                    </span>
 
-[1mPage load performance is fast[0m: [32m98%[0m
- ── [32m97[0m First meaningful paint ([1m1504.9ms[0m)
- ── [32m99[0m Speed Index ([1m999[0m)
-    - First Visual Change: 149ms
-    - Last Visual Change: 2405ms
- ── [32m100[0m Estimated Input Latency ([1m16.7ms[0m)
-    - 90% probability of input latency at 16.7ms or shorter.
-      (50%: 16.0ms, 75%: 16.0ms, 90%: 16.7ms, 99%: 113.3ms, 100%: 141.5ms)
- ── [32m95[0m Time To Interactive (alpha) ([1m1923.9ms[0m)
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
 
-[1mSite is progressively enhanced[0m: [32m100%[0m
- ── [32m✓[0m Page contains some content when its scripts are not available
 
-[1mNetwork connection is secure[0m: [32m100%[0m
- ── [32m✓[0m Site is on HTTPS
- ── [32m✓[0m Site redirects HTTP traffic to HTTPS
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
 
-[1mUser can be prompted to Add to Homescreen[0m: [32m100%[0m
- ── [32m✓[0m Has a registered Service Worker
- ── [32m✓[0m Manifest exists
- ── [32m✓[0m Manifest contains start_url
- ── [32m✓[0m Manifest contains icons at least 144px
-    Found icons of sizes: 192x192,512x512
- ── [32m✓[0m Manifest contains short_name
+                      Cache contains start_url from manifest (alpha)
 
-[1mInstalled web app will launch with custom splash screen[0m: [32m100%[0m
- ── [32m✓[0m Manifest exists
- ── [32m✓[0m Manifest contains name
- ── [32m✓[0m Manifest contains background_color
- ── [32m✓[0m Manifest contains theme_color
- ── [32m✓[0m Manifest contains icons at least 192px
-    Found icons of sizes: 192x192,512x512
+                    </span>
 
-[1mAddress bar matches brand colors[0m: [32m100%[0m
- ── [32m✓[0m Manifest exists
- ── [32m✓[0m HTML has a theme-color <meta> ([1mrgb(235, 168, 67)[0m)
- ── [32m✓[0m Manifest contains theme_color
+                    <span class="report-section__item-value report-section__item-value--poor">&#10008;</span>
+                  </div>
 
-[1mDesign is mobile-friendly[0m: [32m100%[0m
- ── [32m✓[0m HTML has a viewport <meta>
- ── [32m✓[0m Content is sized correctly for the viewport
 
-▫ [1mBest Practices[0m
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
 
- ── [32m✓[0m Element aria-* roles are valid
- ── [32m✓[0m Element aria-* attributes are valid ARIA attributes
- ── [32m✓[0m Background and foreground colors have a sufficient contrast ratio
- ── [32m✓[0m Every image element has an alt attribute
- ── [32m✓[0m Every form element has a label
- ── [32m✓[0m Manifest's short_name won't be truncated when displayed on homescreen
- ── [32m✓[0m Manifest's display property is set ([1mstandalone[0m)
-    Manifest display property should be set.
+            <h1 class="report-section__subtitle">Page load performance is fast</h1>
 
-▫ [1mPerformance Metrics[0m
+            <p class="report-section__aggregation-description">Users notice if sites and apps don't perform well. These top-level metrics capture the most important perceived performance concerns.</p>
 
- ── [32m96[0m Critical Request Chains
-    - Longest request chain (shorter is better): 3
-    - Longest chain duration (shorter is better): 2440.81ms
-    - Longest chain transfer size (smaller is better): 33.24KB
-    - Initial navigation
-      ┣━┳ / (hplustime.com)
-      ┃ ┣━━ src/showcase-app.html (hplustime.com) - 187.41ms, 3.06KB
-      ┃ ┣━━ app-toolbar/app-toolbar.html (hplustime.com) - 279.06ms, 1.67KB
-      ┃ ┣━━ app-header/app-header.html (hplustime.com) - 281.91ms, 3.31KB
-      ┃ ┣━━ app-drawer-layout/app-drawer-layout.html (hplustime.com) - 282.80ms, 2.28KB
-      ┃ ┣━━ app-route/app-location.html (hplustime.com) - 283.86ms, 1.78KB
-      ┃ ┣━━ app-scroll-effects/app-scroll-effects-behavior.html (hplustime.com) - 389.04ms, 2.27KB
-      ┃ ┣━━ app-route/app-route-converter-behavior.html (hplustime.com) - 389.39ms, 1.63KB
-      ┃ ┣━━ iron-resizable-behavior/iron-resizable-behavior.html (hplustime.com) - 389.73ms, 3.25KB
-      ┃ ┣━━ iron-flex-layout/iron-flex-layout.html (hplustime.com) - 390.07ms, 3.32KB
-      ┃ ┣━━ manifest/icon-192x192.png (hplustime.com) - 455.95ms, 8.08KB
-      ┃ ┣━━ iron-scroll-target-behavior/iron-scroll-target-behavior.html (hplustime.com) - 481.92ms, 1.97KB
-      ┃ ┣━━ iron-selector/iron-selector.html (hplustime.com) - 522.73ms, 1.45KB
-      ┃ ┣━━ iron-pages/iron-pages.html (hplustime.com) - 523.18ms, 1.64KB
-      ┃ ┣━━ app-route/app-route.html (hplustime.com) - 523.76ms, 2.46KB
-      ┃ ┣━━ app-header-layout/app-header-layout.html (hplustime.com) - 531.95ms, 2.17KB
-      ┃ ┣━━ app-scroll-effects/app-scroll-effects.html (hplustime.com) - 533.57ms, 1.43KB
-      ┃ ┣━━ paper-icon-button/paper-icon-button.html (hplustime.com) - 534.17ms, 1.97KB
-      ┃ ┣━━ app-drawer/app-drawer.html (hplustime.com) - 534.45ms, 3.85KB
-      ┃ ┣━━ iron-flex-layout/iron-flex-layout-classes.html (hplustime.com) - 537.17ms, 3.04KB
-      ┃ ┣━━ paper-dialog/paper-dialog.html (hplustime.com) - 546.18ms, 1.67KB
-      ┃ ┣━━ iron-media-query/iron-media-query.html (hplustime.com) - 547.32ms, 1.71KB
-      ┃ ┣━━ neon-animation/neon-animation.html (hplustime.com) - 547.75ms, 1.43KB
-      ┃ ┣━━ paper-tabs/paper-tabs.html (hplustime.com) - 548.11ms, 3.83KB
-      ┃ ┣━━ iron-location/iron-location.html (hplustime.com) - 614.36ms, 2.47KB
-      ┃ ┣━━ iron-location/iron-query-params.html (hplustime.com) - 614.81ms, 1.79KB
-      ┃ ┣━━ iron-icons/iron-icons.html (hplustime.com) - 641.97ms, 23.83KB
-      ┃ ┣━┳ polymer/polymer.html (hplustime.com)
-      ┃ ┃ ┗━━ src/showcase-home.html (hplustime.com) - 2025.00ms, 35.35KB
-      ┃ ┗━━ helpers/helpers.html (hplustime.com) - 758.19ms, 1.89KB
-      ┣━━ iron-selector/iron-multi-selectable.html (hplustime.com) - 615.65ms, 0.81KB
-      ┣━━ paper-behaviors/paper-inky-focus-behavior.html (hplustime.com) - 635.98ms, 0.76KB
-      ┣━━ effects/material.html (hplustime.com) - 636.31ms, 0.30KB
-      ┣━━ iron-selector/iron-selectable.html (hplustime.com) - 643.98ms, 1.33KB
-      ┣━━ effects/resize-snapped-title.html (hplustime.com) - 645.09ms, 0.49KB
-      ┣━━ effects/waterfall.html (hplustime.com) - 652.34ms, 0.26KB
-      ┣━━ effects/blend-background.html (hplustime.com) - 652.76ms, 0.39KB
-      ┣━━ effects/resize-title.html (hplustime.com) - 653.12ms, 0.70KB
-      ┣━━ paper-styles/default-theme.html (hplustime.com) - 653.46ms, 1.00KB
-      ┣━━ effects/fade-background.html (hplustime.com) - 653.99ms, 0.45KB
-      ┣━━ paper-dialog-behavior/paper-dialog-behavior.html (hplustime.com) - 654.72ms, 0.62KB
-      ┣━━ neon-animation/neon-animatable-behavior.html (hplustime.com) - 655.08ms, 0.66KB
-      ┣━━ neon-animation/neon-animation-behavior.html (hplustime.com) - 655.57ms, 0.46KB
-      ┣━━ effects/parallax-background.html (hplustime.com) - 657.11ms, 0.46KB
-      ┣━━ paper-tabs/paper-tabs-icons.html (hplustime.com) - 657.54ms, 0.29KB
-      ┣━━ iron-selector/iron-selection.html (hplustime.com) - 748.62ms, 0.45KB
-      ┣━━ iron-behaviors/iron-button-state.html (hplustime.com) - 749.07ms, 1.83KB
-      ┣━━ paper-behaviors/paper-ripple-behavior.html (hplustime.com) - 749.44ms, 1.45KB
-      ┣━━ iron-iconset-svg/iron-iconset-svg.html (hplustime.com) - 749.76ms, 1.01KB
-      ┣━━ iron-overlay-behavior/iron-overlay-behavior.html (hplustime.com) - 755.58ms, 1.69KB
-      ┣━━ iron-meta/iron-meta.html (hplustime.com) - 759.69ms, 2.22KB
-      ┣━━ polymer/polymer-mini.html (hplustime.com) - 833.50ms, 11.47KB
-      ┣━━ iron-behaviors/iron-control-state.html (hplustime.com) - 859.66ms, 1.24KB
-      ┣━━ iron-overlay-behavior/iron-focusables-helper.html (hplustime.com) - 865.59ms, 0.91KB
-      ┣━━ iron-a11y-keys-behavior/iron-a11y-keys-behavior.html (hplustime.com) - 865.99ms, 4.59KB
-      ┣━━ neon-animation/neon-animation-runner-behavior.html (hplustime.com) - 871.11ms, 0.76KB
-      ┣━━ iron-overlay-behavior/iron-overlay-manager.html (hplustime.com) - 873.49ms, 1.21KB
-      ┣━━ neon-animation/neon-animations.html (hplustime.com) - 876.28ms, 0.28KB
-      ┣━━ neon-animation/neon-animated-pages.html (hplustime.com) - 884.62ms, 1.04KB
-      ┣━━ polymer/polymer-micro.html (hplustime.com) - 885.89ms, 5.06KB
-      ┣━━ paper-dialog-behavior/paper-dialog-shared-styles.html (hplustime.com) - 890.04ms, 0.52KB
-      ┣━━ neon-animation/neon-shared-element-animation-behavior.html (hplustime.com) - 943.92ms, 0.45KB
-      ┣━━ neon-animation/neon-shared-element-animatable-behavior.html (hplustime.com) - 952.06ms, 0.27KB
-      ┣━━ iron-icon/iron-icon.html (hplustime.com) - 952.28ms, 0.82KB
-      ┣━━ paper-tabs/paper-tab.html (hplustime.com) - 953.32ms, 0.90KB
-      ┣━━ iron-menu-behavior/iron-menubar-behavior.html (hplustime.com) - 954.14ms, 0.49KB
-      ┣━━ paper-ripple/paper-ripple.html (hplustime.com) - 959.51ms, 5.29KB
-      ┣━━ neon-animation/neon-animatable.html (hplustime.com) - 961.49ms, 0.30KB
-      ┣━━ iron-fit-behavior/iron-fit-behavior.html (hplustime.com) - 962.43ms, 2.15KB
-      ┣━━ paper-styles/color.html (hplustime.com) - 1269.80ms, 2.63KB
-      ┣━━ animations/opaque-animation.html (hplustime.com) - 1650.86ms, 0.35KB
-      ┣━━ animations/slide-from-left-animation.html (hplustime.com) - 1651.40ms, 0.38KB
-      ┣━━ animations/slide-from-bottom-animation.html (hplustime.com) - 1652.30ms, 0.39KB
-      ┣━━ animations/fade-in-animation.html (hplustime.com) - 1652.72ms, 0.33KB
-      ┣━━ animations/cascaded-animation.html (hplustime.com) - 1653.20ms, 0.51KB
-      ┣━━ paper-styles/shadow.html (hplustime.com) - 1653.64ms, 0.76KB
-      ┣━━ animations/slide-right-animation.html (hplustime.com) - 1654.01ms, 0.38KB
-      ┣━━ animations/scale-down-animation.html (hplustime.com) - 1654.42ms, 0.42KB
-      ┣━━ iron-overlay-behavior/iron-overlay-backdrop.html (hplustime.com) - 1654.80ms, 0.77KB
-      ┣━━ animations/scale-up-animation.html (hplustime.com) - 1655.20ms, 0.46KB
-      ┣━━ animations/slide-down-animation.html (hplustime.com) - 1656.23ms, 0.38KB
-      ┣━━ animations/hero-animation.html (hplustime.com) - 1656.68ms, 0.53KB
-      ┣━━ animations/slide-from-top-animation.html (hplustime.com) - 1657.09ms, 0.38KB
-      ┣━━ animations/fade-out-animation.html (hplustime.com) - 1658.02ms, 0.32KB
-      ┣━━ animations/slide-up-animation.html (hplustime.com) - 1658.68ms, 0.38KB
-      ┣━━ animations/reverse-ripple-animation.html (hplustime.com) - 1659.17ms, 0.64KB
-      ┣━━ animations/ripple-animation.html (hplustime.com) - 1659.35ms, 0.65KB
-      ┣━━ animations/slide-left-animation.html (hplustime.com) - 1749.57ms, 0.39KB
-      ┣━━ animations/transform-animation.html (hplustime.com) - 1749.92ms, 0.36KB
-      ┣━━ animations/slide-from-right-animation.html (hplustime.com) - 1779.25ms, 0.38KB
-      ┣━━ iron-menu-behavior/iron-menu-behavior.html (hplustime.com) - 1790.51ms, 1.45KB
-      ┣━━ paper-styles/typography.html (hplustime.com) - 1873.50ms, 0.95KB
-      ┣━━ neon-animation/web-animations.html (hplustime.com) - 1873.70ms, 0.16KB
-      ┣━━ font-roboto/roboto.html (hplustime.com) - 2057.85ms, 0.46KB
-      ┣━━ /css (fonts.googleapis.com) - 2074.77ms, 0.90KB
-      ┣━━ /css (fonts.googleapis.com) - 2074.96ms, 1.80KB
-      ┣━━ src/shared-styles.html (hplustime.com) - 2142.83ms, 0.41KB
-      ┗━━ web-animations-js/web-animations-next-lite.min.js (hplustime.com) - 2440.81ms, 14.23KB
-      
- ── [31m1[0m User Timing marks and measures
-    - mark paintNonDefaultBackgroundColor: 	 time: -349.7ms
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
 
+                      First meaningful paint
+                        <small>
+                          (target: 1,600ms)
+                        </small>
+
+                    </span>
+
+                    <span class="report-section__item-raw-value">(690.6ms)&nbsp;</span>
+                    <span class="report-section__item-value report-section__item-value--good">100</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"></div>
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Speed Index
+                        <small>
+                          (target: 1,250)
+                        </small>
+
+                    </span>
+
+                    <span class="report-section__item-raw-value">(847)&nbsp;</span>
+                    <span class="report-section__item-value report-section__item-value--good">100</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"><style>
+  .speedline-measures {
+    font-size: 14px
+  }
+</style>
+
+<div>
+  <div class="speedline-measures">
+    <div>First Visual Change: <strong>151ms</strong></div>
+    <div>Last Visual Change: <strong>1814ms</strong></div>
+  </div>
+</div>
+</div>
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Estimated Input Latency
+                        <small>
+                          (target: 50ms)
+                        </small>
+
+                    </span>
+
+                    <span class="report-section__item-raw-value">(16.9ms)&nbsp;</span>
+                    <span class="report-section__item-value report-section__item-value--good">100</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"><style>
+  .input-latency-measures {
+    font-size: 14px
+  }
+</style>
+
+<div>
+  <div class="input-latency-measures">
+    <div>90% probability of input latency at <strong>16.9ms</strong> or shorter.<div>
+    <div>
+      (50%: 16.0ms, 75%: 16.0ms, 90%: 16.9ms, 99%: 85.0ms, 100%: 109.0ms)
+    </div>
+  </div>
+</div>
+</div>
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Time To Interactive (alpha)
+                        <small>
+                          (target: 1,700)
+                        </small>
+
+                    </span>
+
+                    <span class="report-section__item-raw-value">(1354.4ms)&nbsp;</span>
+                    <span class="report-section__item-value report-section__item-value--good">99</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"></div>
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Content scrolls at 60fps
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Touch input gets a response in &lt; 150ms
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      App is interactive without jank after the first meaningful paint
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">Site is progressively enhanced</h1>
+
+            <p class="report-section__aggregation-description">Progressive enhancement means that everyone can access the basic content and functionality of a page in any browser, and those without certain browser features may receive a reduced but not unfunctioning experience.</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Page contains some content when its scripts are not available
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">Network connection is secure</h1>
+
+            <p class="report-section__aggregation-description">Security is an important part of the web for both developers and users. Moving forward, Transport Layer Security (TLS) support will be required for many APIs.</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Site is on HTTPS
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Site redirects HTTP traffic to HTTPS
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">User can be prompted to Add to Homescreen</h1>
+
+            <p class="report-section__aggregation-description">While users can manually add your site to their homescreen in the browser menu, the <a href="https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android?hl=en">prompt (aka app install banner)</a> will proactively prompt the user to install the app if the below requirements are met and the user has visited your site at least twice (with at least five minutes between visits).</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Has a registered Service Worker
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest exists
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains start_url
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains icons at least 144px
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains short_name
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">Installed web app will launch with custom splash screen</h1>
+
+            <p class="report-section__aggregation-description">A default splash screen will be constructed, but meeting these requirements guarantee a high-quality and customizable <a href="https://developers.google.com/web/updates/2015/10/splashscreen?hl=en">splash screen</a> the user sees between tapping the home screen icon and your app’s first paint.</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest exists
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains name
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains background_color
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"></div>
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains theme_color
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains icons at least 192px
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">Address bar matches brand colors</h1>
+
+            <p class="report-section__aggregation-description">The browser address bar can be themed to match your site. A theme-color <a href="https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android">meta tag</a> will upgrade the address bar when a user browses the site, and the <a href="https://developers.google.com/web/updates/2015/08/using-manifest-to-set-sitewide-theme-color">manifest theme-color</a> will apply the same theme site-wide once it's been added to homescreen.</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest exists
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      HTML has a theme-color &lt;meta&gt;
+
+                    </span>
+
+                    <span class="report-section__item-raw-value">(rgb(235, 168, 67))&nbsp;</span>
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Manifest contains theme_color
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+            <section class="report-body__breakdown-item">
+
+            <h1 class="report-section__subtitle">Design is mobile-friendly</h1>
+
+            <p class="report-section__aggregation-description">Users increasingly experience your app on mobile devices, so it's important to ensure that the experience can adapt to smaller screens.</p>
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      HTML has a viewport &lt;meta&gt;
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+
+                      Content is sized correctly for the viewport
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="js-report-by-technology" hidden="hidden">
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">Offline</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Has a registered Service Worker
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        URL responds with a 200 when offline
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">Manifest</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Cache contains start_url from manifest (alpha)
+                      </span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest exists
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains start_url
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains icons at least 144px
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains short_name
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains name
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains background_color
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                      <div class="report-section__item-extended-info"></div>
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains theme_color
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Manifest contains icons at least 192px
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">Performance</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        First meaningful paint
+                          (target: 1,600ms)
+                      </span>
+                      <span class="report-section__item-raw-value">(690.6)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                      <div class="report-section__item-extended-info"></div>
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Speed Index
+                          (target: 1,250)
+                      </span>
+                      <span class="report-section__item-raw-value">(847)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                      <div class="report-section__item-extended-info"><style>
+  .speedline-measures {
+    font-size: 14px
+  }
+</style>
+
+<div>
+  <div class="speedline-measures">
+    <div>First Visual Change: <strong>151ms</strong></div>
+    <div>Last Visual Change: <strong>1814ms</strong></div>
+  </div>
+</div>
+</div>
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Estimated Input Latency
+                          (target: 50ms)
+                      </span>
+                      <span class="report-section__item-raw-value">(16.9)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                      <div class="report-section__item-extended-info"><style>
+  .input-latency-measures {
+    font-size: 14px
+  }
+</style>
+
+<div>
+  <div class="input-latency-measures">
+    <div>90% probability of input latency at <strong>16.9ms</strong> or shorter.<div>
+    <div>
+      (50%: 16.0ms, 75%: 16.0ms, 90%: 16.9ms, 99%: 85.0ms, 100%: 109.0ms)
+    </div>
+  </div>
+</div>
+</div>
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Time To Interactive (alpha)
+                          (target: 1,700)
+                      </span>
+                      <span class="report-section__item-raw-value">(1354.4)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                      <div class="report-section__item-extended-info"></div>
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">UX</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item coming-soon">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Content scrolls at 60fps
+                        (Coming soon)
+                      </span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">JavaScript</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Page contains some content when its scripts are not available
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">Security</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Site is on HTTPS
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Site redirects HTTP traffic to HTTPS
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">HTML</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        HTML has a theme-color &lt;meta&gt;
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+            <section class="report-body__breakdown-item">
+              <h1 class="report-section__subtitle">Mobile Friendly</h1>
+
+              <ul class="report-section__individual-results">
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        HTML has a viewport &lt;meta&gt;
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+                  <li class="report-section__item ">
+                    <div class="report-section__item-details">
+                      <span class="report-section__item-description">
+                        Content is sized correctly for the viewport
+                      </span>
+                      <span class="report-section__item-raw-value">(true)&nbsp;</span>
+                      <span class="report-section__item-value report-section__item-value--poor"></span>
+                    </div>
+
+                  </li>
+              </ul>
+            </section>
+        </div>
+      </div>
+      <div class="js-breakdown report-body__breakdown">
+        <h1 class="report-section__title" id="best-practices">
+          <span class="report-section__title-main">Best Practices</span>
+        </h1>
+        <p class="report-section__description">These audits do not affect your score but are worth a look.</p>
+
+        <div class="js-report-by-user-feature">
+            <section class="report-body__breakdown-item">
+
+
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Accessibility:
+                        </span>
+
+                      Element aria-* roles are valid
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Accessibility:
+                        </span>
+
+                      Element aria-* attributes are valid ARIA attributes
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Accessibility:
+                        </span>
+
+                      Background and foreground colors have a sufficient contrast ratio
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Accessibility:
+                        </span>
+
+                      Every image element has an alt attribute
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Accessibility:
+                        </span>
+
+                      Every form element has a label
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Manifest:
+                        </span>
+
+                      Manifest&#x27;s short_name won&#x27;t be truncated when displayed on homescreen
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Manifest:
+                        </span>
+
+                      Manifest&#x27;s display property is set
+
+                    </span>
+
+                    <span class="report-section__item-raw-value">(standalone)&nbsp;</span>
+                    <span class="report-section__item-value report-section__item-value--good">&#10004;</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          UX:
+                        </span>
+
+                      Service worker makes use of push notifications, if appropriate
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          UX:
+                        </span>
+
+                      Tap targets are appropriately sized for touch
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          UX:
+                        </span>
+
+                      Payment forms marked up with [autocomplete] attributes
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          UX:
+                        </span>
+
+                      Login forms marked up with [autocomplete] attributes
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+                <li class="report-section__item coming-soon">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          UX:
+                        </span>
+
+                      Input fields use appropriate [type] attributes for custom keyboards
+                      (Coming soon)
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--poor">¯\_(ツ)_/¯</span>
+                  </div>
+
+
+                </li>
+            </ul>
+          </section>
+        </div>
+
+      </div>
+      <div class="js-breakdown report-body__breakdown">
+        <h1 class="report-section__title" id="performance-metrics">
+          <span class="report-section__title-main">Performance Metrics</span>
+        </h1>
+        <p class="report-section__description">These encapsulate your app&#x27;s performance.</p>
+
+        <div class="js-report-by-user-feature">
+            <section class="report-body__breakdown-item">
+
+
+
+            <ul class="report-section__individual-results">
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Performance:
+                        </span>
+
+                      Critical Request Chains
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">96</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"><style>
+.tree-marker {
+  width: 12px;
+  height: 26px;
+  display: block;
+  float: left;
+  background-position: top left;
+}
+
+.horiz-down {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMjZweCIgdmlld0JveD0iMCAwIDE2IDI2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjcuMiAoMjgyNzYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPmhvcml6LWRvd248L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iaG9yaXotZG93biIgZmlsbD0iI0Q4RDhEOCI+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMTM4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3LjAwMDAwMCwgMTMuMDAwMDAwKSByb3RhdGUoLTI3MC4wMDAwMDApIHRyYW5zbGF0ZSgtNy4wMDAwMDAsIC0xMy4wMDAwMDApICIgeD0iNiIgeT0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTgiPjwvcmVjdD4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0xMzkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDguMDAwMDAwLCAxOS4wMDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC04LjAwMDAwMCwgLTE5LjAwMDAwMCkgIiB4PSIxIiB5PSIxOCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjIiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==');
+}
+
+.right {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMjZweCIgdmlld0JveD0iMCAwIDE2IDI2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjcuMiAoMjgyNzYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPnJpZ2h0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9InJpZ2h0IiBmaWxsPSIjRDhEOEQ4Ij4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0xMzgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDguMDAwMDAwLCAxMy4wMDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC04LjAwMDAwMCwgLTEzLjAwMDAwMCkgIiB4PSI3IiB5PSI1IiB3aWR0aD0iMiIgaGVpZ2h0PSIxNiI+PC9yZWN0PgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+');
+}
+
+.up-right {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMjZweCIgdmlld0JveD0iMCAwIDE2IDI2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjcuMiAoMjgyNzYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPnVwLXJpZ2h0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9InVwLXJpZ2h0IiBmaWxsPSIjRDhEOEQ4Ij4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0xMzgiIHg9IjciIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0Ij48L3JlY3Q+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMTM5IiB4PSI5IiB5PSIxMiIgd2lkdGg9IjciIGhlaWdodD0iMiI+PC9yZWN0PgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+');
+}
+
+.vert-right {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMjZweCIgdmlld0JveD0iMCAwIDE2IDI2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjcuMiAoMjgyNzYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPnZlcnQtcmlnaHQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0idmVydC1yaWdodCIgZmlsbD0iI0Q4RDhEOCI+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMTM4IiB4PSI3IiB5PSIwIiB3aWR0aD0iMiIgaGVpZ2h0PSIyNyI+PC9yZWN0PgogICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTEzOSIgeD0iOSIgeT0iMTIiIHdpZHRoPSI3IiBoZWlnaHQ9IjIiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==');
+}
+
+.vert {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMjZweCIgdmlld0JveD0iMCAwIDE2IDI2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjcuMiAoMjgyNzYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPnZlcnQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0idmVydCIgZmlsbD0iI0Q4RDhEOCI+CiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMTM4IiB4PSI3IiB5PSIwIiB3aWR0aD0iMiIgaGVpZ2h0PSIyNiI+PC9yZWN0PgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+');
+}
+
+.space {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjcuMiAoMjgyNzYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPmhvcml6LWRvd248L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iaG9yaXotZG93biI+PC9nPgogICAgPC9nPgo8L3N2Zz4=');
+}
+
+.cnc-tree {
+  font-size: 14px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cnc-node {
+  height: 26px;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.cnc-node__tree-value {
+  margin-left: 10px;
+}
+
+.cnc-node__chain-duration {
+  font-weight: bold;
+}
+
+.cnc-node__tree-hostname {
+  color: #999;
+}
+
+</style>
+
+
+<div class="cnc-tree">
+  <div>Longest request chain (shorter is better): <strong>3</strong></div>
+  <div>Longest chain duration (shorter is better): <strong>2021.93ms</strong></div>
+  <div>Longest chain transfer size (smaller is better): <strong>33.25KB</strong></div>
+  <div>
+    <div>Initial navigation</div>
+            <div class="cnc-node" title="792.1">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker horiz-down"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">/</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+              </span>
+            </div>
+          
+                  <div class="cnc-node" title="792.2">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">src/showcase-app.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">195.88ms, 3.10KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.7">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-drawer/app-drawer.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">305.40ms, 3.85KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.13">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-route/app-location.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">305.75ms, 1.80KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.17">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-selector/iron-selector.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">306.59ms, 1.48KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.6">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker horiz-down"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">polymer/polymer.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                    </span>
+                  </div>
+                
+                        <div class="cnc-node" title="792.217">
+                          <span class="cnc-node__tree-marker">
+                            <span class="tree-marker vert"></span>
+                            <span class="tree-marker space"></span>
+                            <span class="tree-marker vert"></span>
+                            <span class="tree-marker space"></span>
+                            <span class="tree-marker up-right"></span>
+                            <span class="tree-marker right"></span>
+                      
+                            <span class="tree-marker right"></span>
+                          </span>
+                      
+                          <span class="cnc-node__tree-value">
+                              <span class="cnc-node__tree-file">src/showcase-home.html</span>
+                              <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                              - <span class="cnc-node__chain-duration">1584.79ms, 35.38KB</span>
+                          </span>
+                        </div>
+                      
+                  <div class="cnc-node" title="792.25">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-location/iron-location.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">405.37ms, 2.48KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.28">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-selector/iron-multi-selectable.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">406.91ms, 1.99KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.27">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-route/app-route-converter-behavior.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">416.35ms, 1.65KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.3">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">manifest/icon-192x192.png</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">434.07ms, 8.09KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.30">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-selector/iron-selectable.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">517.71ms, 2.55KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.12">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-toolbar/app-toolbar.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">528.55ms, 1.70KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.19">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-media-query/iron-media-query.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">531.71ms, 1.73KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.15">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-pages/iron-pages.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">535.94ms, 1.66KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.10">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-header-layout/app-header-layout.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">546.46ms, 2.18KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.14">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-route/app-route.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">546.81ms, 2.46KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.16">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">paper-tabs/paper-tabs.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">547.28ms, 3.83KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.21">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">paper-dialog/paper-dialog.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">547.59ms, 1.66KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.22">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">neon-animation/neon-animation.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">547.90ms, 1.45KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.9">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-header/app-header.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">552.26ms, 3.33KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.18">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-flex-layout/iron-flex-layout-classes.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">553.48ms, 3.08KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.11">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-scroll-effects/app-scroll-effects.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">562.51ms, 1.47KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.20">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">paper-icon-button/paper-icon-button.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">564.72ms, 1.98KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.8">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">app-drawer-layout/app-drawer-layout.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">573.16ms, 2.27KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.24">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-flex-layout/iron-flex-layout.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">635.41ms, 3.36KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.23">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-icons/iron-icons.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">649.34ms, 23.88KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.26">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker vert-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">iron-location/iron-query-params.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">666.00ms, 1.82KB</span>
+                    </span>
+                  </div>
+                
+                  <div class="cnc-node" title="792.29">
+                    <span class="cnc-node__tree-marker">
+                      <span class="tree-marker vert"></span>
+                      <span class="tree-marker space"></span>
+                      <span class="tree-marker up-right"></span>
+                      <span class="tree-marker right"></span>
+                
+                      <span class="tree-marker right"></span>
+                    </span>
+                
+                    <span class="cnc-node__tree-value">
+                        <span class="cnc-node__tree-file">polymer/polymer-mini.html</span>
+                        <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                        - <span class="cnc-node__chain-duration">752.30ms, 12.69KB</span>
+                    </span>
+                  </div>
+                
+            <div class="cnc-node" title="792.34">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-selector/iron-selection.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">633.06ms, 0.44KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.35">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-resizable-behavior/iron-resizable-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">635.22ms, 2.05KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.44">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-animatable-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">662.87ms, 0.66KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.38">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-styles/color.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">663.57ms, 2.61KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.36">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-icon/iron-icon.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">665.47ms, 0.80KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.50">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-shared-element-animation-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">665.86ms, 0.43KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.51">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">app-scroll-effects/app-scroll-effects-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">666.44ms, 1.07KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.40">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-tabs/paper-tab.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">666.77ms, 0.87KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.55">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/parallax-background.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">667.09ms, 0.46KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.48">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-animations.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">667.43ms, 0.27KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.42">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-dialog-behavior/paper-dialog-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">667.75ms, 0.62KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.43">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-dialog-behavior/paper-dialog-shared-styles.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">668.17ms, 0.51KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.46">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-animatable.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">668.50ms, 0.29KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.37">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-menu-behavior/iron-menubar-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">673.41ms, 0.49KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.49">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-shared-element-animatable-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">673.84ms, 0.26KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.47">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-animation-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">675.60ms, 0.46KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.45">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-animated-pages.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">675.74ms, 1.05KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.39">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-tabs/paper-tabs-icons.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">676.13ms, 0.29KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.61">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-iconset-svg/iron-iconset-svg.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">752.70ms, 1.00KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.62">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-meta/iron-meta.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">759.21ms, 2.22KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.65">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-behaviors/iron-button-state.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">761.79ms, 1.84KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.63">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-scroll-target-behavior/iron-scroll-target-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">762.22ms, 0.75KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.64">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">helpers/helpers.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">763.76ms, 0.67KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.70">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/fade-out-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">769.89ms, 0.32KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.66">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-behaviors/iron-control-state.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">770.20ms, 1.25KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.72">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/opaque-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">777.64ms, 0.34KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.67">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-behaviors/paper-ripple-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">778.16ms, 1.44KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.79">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-from-top-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">778.63ms, 0.38KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.85">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/transform-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">779.19ms, 0.36KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.75">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/scale-down-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">779.66ms, 0.40KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.71">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/hero-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">782.17ms, 0.53KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.89">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-menu-behavior/iron-menu-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">782.52ms, 1.47KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.76">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/scale-up-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">789.14ms, 0.40KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.82">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-right-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">789.61ms, 0.39KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.74">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/reverse-ripple-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">793.45ms, 0.65KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.68">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/cascaded-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">821.86ms, 0.50KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.69">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/fade-in-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">822.29ms, 0.33KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.80">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-from-bottom-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">823.01ms, 0.38KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.84">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-down-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">823.36ms, 0.37KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.78">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-from-right-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">824.43ms, 0.38KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.90">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">polymer/polymer-micro.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">859.93ms, 5.02KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.91">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-a11y-keys-behavior/iron-a11y-keys-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">866.29ms, 4.59KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.92">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/web-animations.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">866.79ms, 0.16KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.93">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-ripple/paper-ripple.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">922.10ms, 5.26KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.60">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-styles/default-theme.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">938.38ms, 1.00KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.54">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/material.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">943.20ms, 0.30KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.56">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/resize-snapped-title.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">952.45ms, 0.54KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.57">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/resize-title.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">952.97ms, 0.69KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.41">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">neon-animation/neon-animation-runner-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">956.85ms, 0.73KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.58">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/waterfall.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">961.33ms, 0.26KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.52">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/blend-background.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">961.71ms, 0.40KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.59">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-behaviors/paper-inky-focus-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">965.79ms, 0.77KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.53">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">effects/fade-background.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">966.13ms, 0.47KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.83">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-up-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1535.62ms, 0.38KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.88">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-styles/shadow.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1568.54ms, 0.75KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.77">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-from-left-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1568.96ms, 0.38KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.81">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/slide-left-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1582.73ms, 0.39KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.87">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">paper-styles/typography.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1711.69ms, 0.92KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.73">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">animations/ripple-animation.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1712.08ms, 0.62KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.86">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-overlay-behavior/iron-overlay-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1712.53ms, 1.66KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.218">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">src/shared-styles.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1751.56ms, 0.43KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.221">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-overlay-behavior/iron-overlay-manager.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1828.05ms, 1.20KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.216">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">web-animations-js/web-animations-next-lite.min.js</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1828.18ms, 14.26KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.219">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">font-roboto/roboto.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1832.50ms, 0.44KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.222">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-overlay-behavior/iron-focusables-helper.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">1833.84ms, 0.92KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.225">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">/css</span>
+                  <span class="cnc-node__tree-hostname">(fonts.googleapis.com)</span>
+                  - <span class="cnc-node__chain-duration">1857.73ms, 0.90KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.224">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">/css</span>
+                  <span class="cnc-node__tree-hostname">(fonts.googleapis.com)</span>
+                  - <span class="cnc-node__chain-duration">1860.67ms, 1.80KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.220">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker vert-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-fit-behavior/iron-fit-behavior.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">2017.76ms, 2.16KB</span>
+              </span>
+            </div>
+          
+            <div class="cnc-node" title="792.223">
+              <span class="cnc-node__tree-marker">
+                <span class="tree-marker up-right"></span>
+                <span class="tree-marker right"></span>
+          
+                <span class="tree-marker right"></span>
+              </span>
+          
+              <span class="cnc-node__tree-value">
+                  <span class="cnc-node__tree-file">iron-overlay-behavior/iron-overlay-backdrop.html</span>
+                  <span class="cnc-node__tree-hostname">(hplustime.com)</span>
+                  - <span class="cnc-node__chain-duration">2021.93ms, 0.79KB</span>
+              </span>
+            </div>
+          
+  </div>
+</div>
+</div>
+                </li>
+                <li class="report-section__item ">
+                  <div class="report-section__item-details">
+                    <span class="report-section__item-description">
+                        <span class="report-section__item-category">
+                          Performance:
+                        </span>
+
+                      User Timing marks and measures
+
+                    </span>
+
+                    <span class="report-section__item-value report-section__item-value--good">1</span>
+                  </div>
+
+
+                    <div class="report-section__item-extended-info"><style>
+  .ut-measures {
+    font-size: 14px
+  }
+
+  .ut-measure_listing-duration {
+    font-weight: bold
+  }
+</style>
+
+<div>
+  <div class="ut-measures">
+      <div>
+          <span class="ut-measure_listing-duration">Mark: -319.20ms</span> - paintNonDefaultBackgroundColor
+      </div>
+  </div>
+</div>
+</div>
+                </li>
+            </ul>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="footer">
+      Generated by <b>Lighthouse</b> on 12/22/2016, 6:30:43 AM GMT | <a href="https://github.com/GoogleChrome/Lighthouse/issues" target="_blank">File an issue</a>
+    </footer>
+  </section>
+</div>
+<script>/**
+ * @license
+ * Copyright 2016 Google Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* global window, document */
+
+'use strict';
+
+/* Using ES5 to broaden support */
+function LighthouseReport() {
+  this.printButton = document.querySelector('.js-print');
+  this.checkboxToggleView = document.querySelector('.js-toggle-view');
+  this.viewUserFeature = document.querySelector('.js-report-by-user-feature');
+  this.viewTechnology = document.querySelector('.js-report-by-technology');
+  this.reportItems = document.querySelectorAll('.report-section__item');
+
+  this.updateView = this.updateView.bind(this);
+  this.toggleHelpText = this.toggleHelpText.bind(this);
+
+  this.addEventListeners();
+}
+
+LighthouseReport.prototype = {
+
+  onPrint: function() {
+    window.print();
+  },
+
+  updateView: function() {
+    if (this.checkboxToggleView.checked) {
+      this.viewUserFeature.setAttribute('hidden', 'hidden');
+      this.viewTechnology.removeAttribute('hidden');
+    } else {
+      this.viewUserFeature.removeAttribute('hidden');
+      this.viewTechnology.setAttribute('hidden', 'hidden');
+    }
+  },
+
+  toggleHelpText: function(e) {
+    if (e.target.classList.contains('report-section__item-help-toggle')) {
+      const el = e.currentTarget.querySelector('.report-section__item-helptext');
+      if (el) {
+        el.hidden = !el.hidden;
+      }
+    }
+  },
+
+  addEventListeners: function() {
+    this.printButton.addEventListener('click', this.onPrint);
+    this.checkboxToggleView.addEventListener('change', this.updateView);
+    [...this.reportItems].forEach(node => {
+      node.addEventListener('click', this.toggleHelpText);
+    });
+  }
+};
+
+(function() {
+  return new LighthouseReport();
+})();
+</script>
+</body>
+</html>
