@@ -38,16 +38,19 @@ deploy:
     - script:
         name: push to surge domain
         code: surge build/unbundled hplustime.com --token $SURGE_TOKEN
-post_deploy:
-  steps:
     - script:
         name: lighthouse audit
         code: |
-          mkdir report && cp README.md report && apt-get update && apt-get install -y git
+          mkdir report && cp README.md report
           headless_shell --no-sandbox --remote-debugging-port=9222 &>1 &
           lighthouse https://hplustime.com --output json --output-path=report/lighthouse_results.json
+          lighthouse https://hplustime.com --output pretty --output-path=report/lighthouse_results.html
+          echo audit.hplustime.com > report/CNAME
     - leipert/git-push:
         branch: report
         gh_oauth: $GITHUB_TOKEN
         basedir: report
         clean_removed_files: true
+    - script:
+        name: surge deploy audit reports
+        code: surge report audit.hplustime.com --token $SURGE_TOKEN
