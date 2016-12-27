@@ -45,13 +45,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
     <meta name="msapplication-TileColor" content="rgb(235, 168, 67)">
     <meta name="msapplication-tap-highlight" content="no">
+    <link rel="preload" href="../data/resume.json">
 
     <link rel="import" href="/src/showcase-app.html" async>
 
     <style>
       body {
         margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: 0.02em;
         line-height: 1.5;
         min-height: 100vh;
         background-color: #eeeeee;
@@ -60,7 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       body {
         margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        /*font-family: 'Roboto', 'Noto', sans-serif;*/
         line-height: 1.5;
         height: 100%;
         min-height: 100vh;
