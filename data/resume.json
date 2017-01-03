@@ -21,7 +21,7 @@
       "title": "CXS Controlroom",
       "category": "foss",
       "role": "co-creator",
-      "url": "h-plus-time.github.io/cxs-controlroom",
+      "url": "https://h-plus-time.github.io/cxs-controlroom",
       "repo": "https://github.com/H-Plus-Time/cxs-controlroom.git",
       "description": "",
       "start": "2016-11",
@@ -51,6 +51,16 @@
       "keywords": ["Android", "Polymer"]
     },
     {
+            "title": "ShapeDetection polyfill",
+            "category": "foss",
+            "role": "creator",
+            "url": "https://github.com/H-Plus-Time/ShapeDetection-polyfill",
+            "repo": "https://github.com/H-Plus-Time/ShapeDetection-polyfill.git",
+            "start": "2016-12",
+            "summary": "Polyfill for face and barcode detection",
+            "keywords": ["backwards compatibility", "progressive enhancement"]
+    },
+    {
       "title": "Zeitgeist",
       "category": "foss",
       "role": "creator",
@@ -65,19 +75,33 @@
 
   "social": [
 
-    {
-      "label": "GitHub",
-      "network": "GitHub",
-      "user": "H-Plus-Time",
-      "url": "https://github.com/H-Plus-Time"
-    },
+      {
+          "label": "GitHub",
+          "network": "github",
+          "user": "H-Plus-Time",
+          "url": "https://github.com/H-Plus-Time"
+      },
 
-    {
-      "label": "Twitter",
-      "network": "Twitter",
-      "user": "H-Plus-Time",
-      "url": "https://twitter.com/H_Plus_Time"
-    }
+      {
+          "label": "Twitter",
+          "network": "twitter",
+          "user": "H-Plus-Time",
+          "url": "https://twitter.com/H_Plus_Time"
+      },
+
+      {
+          "label": "Linkedin",
+          "network": "linkedin",
+          "user": "nicholasjroberts",
+          "url": "https://www.linkedin.com/in/nicholasjroberts"
+      },
+
+      {
+          "label": "Quora",
+          "network": "quora",
+          "user": "Nicholas-Roberts-9",
+          "url": "https://www.quora.com/profile/Nicholas-Roberts-9"
+      }
   ],
 
   "education": {

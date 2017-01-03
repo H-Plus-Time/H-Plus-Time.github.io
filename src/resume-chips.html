@@ -1,0 +1,179 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="shared-styles.html" />
+<link rel="import" href="resume-behaviours.html" />
+
+<dom-module id="project-chip">
+    <template>
+        <style>
+            :host {
+                display:block;
+            }
+        </style>
+        <h3>[[data.title]]</h3>
+        <p>
+            [[data.summary]]
+        </p>
+    </template>
+    <script>
+        Polymer({
+            is: "project-chip",
+        })
+    </script>
+</dom-module>
+
+<dom-module id="edu-chip">
+    <template>
+    <style include="shared-styles iron-flex iron-flex-alignment">
+        :host {
+            display: block;
+            padding:10px;
+        }
+        a {
+            text-decoration:none;
+            color:black;
+        }
+        a:hover {
+            background:black;
+            color:white;
+        }
+        .chip {
+            border-radius:10px;
+            background:#673AB7;
+            color:white;
+            padding:2px 5px;
+            margin:2px 5px;
+        }
+    </style>
+    <h3>
+        <a href="[[data.url]]" alt="[[data.institution]]">
+            [[data.institution]]</a> - [[data.title]]
+        </h3>
+    <template is="dom-if" if="[[data.end]]">
+        <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+    </template>
+    <template is="dom-if" if="[[!data.end]]">
+        <h4>[[_humanize(data.start)]] - Present</h4>
+    </template>
+    <div class="horizontal layout wrap">
+        <template is="dom-repeat" items="[[data.curriculum]]">
+            <div class="chip">[[item]]</div>
+        </template>
+    </div>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'edu-chip',
+            behaviours: [
+                Resume
+            ],
+            _humanize: Resume.humanizeDate
+        });
+    </script>
+</dom-module>
+
+<dom-module id="accolade-chip">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <h3>[[data.event]] | [[_humanize(data.date)]]</h3>
+        <h3 class="nomargin">[[data.title]]</h3>
+        <div>[[data.summary]]</div>
+    </template>
+    <script>
+        Polymer({
+            is: 'accolade-chip',
+            behaviours: [
+                Resume
+            ],
+            _humanize: Resume.humanizeDateFull
+        });
+    </script>
+</dom-module>
+
+<dom-module id="skill-chip">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+            :host {
+                display: block;
+                padding-left:10px;
+            }
+            .chip {
+                border-radius:5px;
+                background: var(--app-accent-color);
+                padding:5px;
+                margin:2px 2px;
+                color:white;
+            }
+        </style>
+        <h3>[[data.name]]</h3>
+        <div class="horizontal layout wrap">
+            <template is="dom-repeat" items="[[data.skills]]">
+                <div class="chip">[[item]]</div>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'skill-chip',
+        });
+    </script>
+</dom-module>
+
+<dom-module id="volunteer-chip">
+    <template>
+        <style>
+            :host {
+                display: block;
+                padding-left:10px;
+            }
+        </style>
+        <h3>[[data.title]] | [[data.role]]</h3>
+        <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+        <p>[[data.description]]</p>
+    </template>
+    <script>
+        Polymer({
+            is: 'volunteer-chip',
+            behaviours: [
+                Resume
+            ],
+            _humanize: Resume.humanizeDate
+        });
+    </script>
+</dom-module>
+
+<dom-module id="work-chip">
+    <template>
+        <style>
+            :host {
+                display: block;
+                padding-left:10px;
+            }
+        </style>
+        <h3>[[data.position]], [[data.employer]]</h3>
+        <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+        <p>[[data.summary]]</p>
+        <h4>Highlights</h4>
+        <template is="dom-if" if="[[data.highlights]]">
+            <ul>
+            <template is="dom-repeat" items="[[data.highlights]]">
+            [[item]]
+            </template>
+            </ul>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is: 'work-chip',
+            behaviours: [
+                Resume
+            ],
+            _humanize: Resume.humanizeDate
+        });
+    </script>
+</dom-module>
