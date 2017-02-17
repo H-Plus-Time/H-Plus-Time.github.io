@@ -171,14 +171,14 @@
         "name": "Database",
         "level": "intermediate",
         "skills": [
-          "MySQL", "Tinkerpop", "NoSQL", "CouchDB", "MongoDB", "Neo4j", "Cassandra"
+          "MySQL", "Tinkerpop", "NoSQL", "CouchDB", "MongoDB", "JanusGraph"
         ]
       },
       {
         "name": "Project",
-        "level": "beginner",
+        "level": "intermediate",
         "skills": [
-          "Agile", "Git", "Continuous Integration", "Continuous Delivery"
+          "Agile", "Git", "Continuous Integration", "Continuous Delivery", "Wercker"
         ]
       }
     ]
