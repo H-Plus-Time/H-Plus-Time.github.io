@@ -43,9 +43,9 @@
       "title": "Augmented Melbourne",
       "category": "foss",
       "role": "co-creator",
-      "url": "http://project.website.com",
+      "url": "augmentedmelbourne.surge.sh",
       "repo": "http://github.com/H-Plus-Time/augmented-melbourne.git",
-      "description": "An augmented reality navigation web app.",
+      "description": "Assistive navigational aid for vision-impaired persons",
       "start": "2016-07",
       "summary": "Performed flagship product conceptualization and development.",
       "keywords": ["Android", "Polymer"]

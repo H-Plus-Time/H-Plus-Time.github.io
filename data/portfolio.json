@@ -1,6 +1,6 @@
 [
-  {"name": "Morgana", "logo": "frontend/images/manifest/icon-192x192.png"},
-  {"name": "das_hackathon", "logo": "images/manifest/icon-192x192.png"},
-  {"name": "cxs-controlroom", "logo": "images/manifest/icon-192x192.png"},
-  {"name": "d3-sunburst", "logo": "images/main-logo.png"}
+  {"name": "Morgana", "logo": "frontend/images/manifest/icon-192x192.png", "base_url": "https://h-plus-time.github.io/Morgana"},
+  {"name": "das_hackathon", "logo": "images/manifest/icon-192x192.png", "base_url": "https://dashackathon.surge.sh"},
+  {"name": "cxs-controlroom", "logo": "images/manifest/icon-192x192.png", "base_url": "https://h-plus-time.github.io/cxs-controlroom"},
+  {"name": "d3-sunburst", "logo": "images/main-logo.png", "base_url": "https://h-plus-time.github.io/d3-sunburst"}
 ]
