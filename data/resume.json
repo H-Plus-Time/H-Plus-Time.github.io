@@ -18,37 +18,26 @@
 
   "projects": [
     {
-      "title": "CXS Controlroom",
+      "title": "Controlroom",
       "category": "foss",
       "role": "co-creator",
-      "url": "https://h-plus-time.github.io/cxs-controlroom",
-      "repo": "https://github.com/H-Plus-Time/cxs-controlroom.git",
+      "url": "https://h-plus-time.github.io/controlroom",
+      "repo": "https://github.com/H-Plus-Time/controlroom.git",
       "description": "",
       "start": "2016-11",
-      "summary": "",
+      "summary": "Created frontend entities, constructed websockets-mediated hardware abstraction layer",
       "keywords": ["Autobahn", "Polymer", "control systems"]
     },
     {
       "title": "Morgana",
       "category": "foss",
       "role": "Front-end developer",
-      "url": "h-plus-time.github.io/Morgana",
+      "url": "https://h-plus-time.github.io/Morgana",
       "repo": "https://github.com/GFA-RDIP/Morgana.git",
       "description": "",
       "start": "2016-10",
-      "summary": "",
+      "summary": "Created web frontend, multiple spin-off subcomponents",
       "keywords": ["Polymer", "data visualization", "networks", "health"]
-    },
-    {
-      "title": "Augmented Melbourne",
-      "category": "foss",
-      "role": "co-creator",
-      "url": "augmentedmelbourne.surge.sh",
-      "repo": "http://github.com/H-Plus-Time/augmented-melbourne.git",
-      "description": "Assistive navigational aid for vision-impaired persons",
-      "start": "2016-07",
-      "summary": "Performed flagship product conceptualization and development.",
-      "keywords": ["Android", "Polymer"]
     },
     {
             "title": "ShapeDetection polyfill",
@@ -64,12 +53,12 @@
       "title": "Zeitgeist",
       "category": "foss",
       "role": "creator",
-      "url": "http://h-plus-time.github.io/zeitgeist-front",
-      "repo": "https://github.com/H-Plus-Time/augmented-melbourne.git",
+      "url": "https://zeitgeist.surge.sh",
+      "repo": "https://github.com/H-Plus-Time/zeitgeist.git",
       "description": "",
       "start": "2016-09",
-      "summary": "",
-      "keywords": ["Polymer", "golang", "pubmed"]
+      "summary": "Rebooted from previous project. Implemented large-scale ETL, REST intermediary, frontend",
+      "keywords": ["Polymer", "python", "pubmed", "Spark", "JanusGraph"]
     }
   ],
 
@@ -143,7 +132,7 @@
     "history": [
       {"title": "HealthHack 2016 | Melbourne",
         "role": "co-organiser",
-        "description": "I contributed to strategic planning at the national level (with particular emphasis on increasing diversity across the board, from equal gender representation on the judging panels to increasing representation, access and enfranchisement for rural individuals, and providing childcare). At the Thoughtworks Melbourne site, I oversaw and actively participated in the on-boarding of problem owners (individuals pitching a software, hardware, or policy challenge to participants - doctors, medical researchers, public servants).",
+        "description": "Contributed to strategic planning at the national level (with particular emphasis on increasing diversity across the board, from equal gender representation on the judging panels to increasing representation, access and enfranchisement for rural individuals, and providing childcare). At the Thoughtworks Melbourne site, I oversaw and actively participated in the on-boarding of problem owners (individuals pitching a software, hardware, or policy challenge to participants - doctors, medical researchers, public servants).",
         "start": "2016-06",
         "end": "2016-11"
       }
@@ -157,7 +146,7 @@
         "name": "Web Development",
         "level": "intermediate",
         "skills": [
-          "ES6", "HTML 5", "Polymer", "Redux", "Ramda", "Gulp.js", "d3", "Preact"
+          "ES6", "HTML 5", "Polymer", "Redux", "Gulp.js", "d3", "Preact"
         ]
       },
       {
@@ -165,6 +154,13 @@
         "level": "intermediate",
         "skills": [
           "Node.js", "Golang", "Express", "ZeroMQ", "Python"
+        ]
+      },
+      {
+        "name": "Data Analysis / HPC",
+        "level": "intermediate",
+        "skills": [
+            "pyspark", "Matlab", "CUDA"
         ]
       },
       {
@@ -178,7 +174,7 @@
         "name": "Project",
         "level": "intermediate",
         "skills": [
-          "Agile", "Git", "Continuous Integration", "Continuous Delivery", "Wercker"
+          "Agile", "Git", "Continuous Integration", "Continuous Delivery"
         ]
       }
     ]

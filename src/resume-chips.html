@@ -9,8 +9,16 @@
             :host {
                 display:block;
             }
+            h3 > a {
+                text-decoration:none;
+                color:black;
+            }
+            h3 > a:hover {
+                background:black;
+                color:white;
+            }
         </style>
-        <h3>[[data.title]]</h3>
+        <h3><a href="[[data.url]]">[[data.title]]</a></h3>
         <p>
             [[data.summary]]
         </p>
@@ -27,7 +35,6 @@
     <style include="shared-styles iron-flex iron-flex-alignment">
         :host {
             display: block;
-            padding:10px;
         }
         a {
             text-decoration:none;
@@ -100,7 +107,6 @@
         <style include="iron-flex iron-flex-alignment">
             :host {
                 display: block;
-                padding-left:10px;
             }
             .chip {
                 border-radius:5px;
@@ -129,7 +135,6 @@
         <style>
             :host {
                 display: block;
-                padding-left:10px;
             }
         </style>
         <h3>[[data.title]] | [[data.role]]</h3>
@@ -152,7 +157,6 @@
         <style>
             :host {
                 display: block;
-                padding-left:10px;
             }
         </style>
         <h3>[[data.position]], [[data.employer]]</h3>

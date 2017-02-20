@@ -39,6 +39,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 padding:10px;
                 margin:5px;
             }
+            h3 > a {
+                text-decoration:none;
+                color:black;
+            }
+            h3 > a:hover {
+                background:black;
+                color:white;
+            }
             h1 {
                 margin-bottom:0;
             }
@@ -63,6 +71,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
             paper-card {
                 min-height:300px;
+            }
+            paper-card > * {
+                padding:0 16px 0 16px;
             }
 
             div.profiles {
@@ -99,7 +110,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </template>
         <div class="horizontal layout center">
             <iron-icon icon="communication:email"></iron-icon>
-            <h3>[[resume.contact.email]]</h3>
+            <h3><a href="mailto:[[resume.contact.email]]">[[resume.contact.email]]</a></h3>
         </div>
         <div class="horizontal layout center profiles">
             <template is="dom-repeat" items="[[resume.social]]" as="account">
@@ -134,9 +145,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </paper-card>
             <paper-card heading="Skills">
-                <template is="dom-repeat" items="[[resume.skills.sets]]">
-                    <skill-chip data="[[item]]"></skill-chip>
-                </template>
+                <div class="horizontal layout wrap" style="justify-content:justified">
+                    <template is="dom-repeat" items="[[resume.skills.sets]]">
+                        <skill-chip data="[[item]]" style="padding:10px"></skill-chip>
+                    </template>
+                </div>
             </paper-card>
             <paper-card heading="Volunteer Work">
                 <template is="dom-repeat" items="[[resume.volunteer.history]]">
