@@ -104,13 +104,6 @@
     "history": [
       {
         "institution": "RMIT University",
-        "title": "Bachelor of Science (Dean's Scholar)(Hons)",
-        "url": "https://www.rmit.edu.au",
-        "start": "2017-02",
-        "end": "2019-11"
-      },
-      {
-        "institution": "RMIT University",
         "title": "Bachelor of Computer Science",
         "url": "https://www.rmit.edu.au/",
         "start": "2014-07",
@@ -139,6 +132,31 @@
     ]
   },
 
+  "employment": {
+    "history": [
+      {
+        "title": "Software Developer",
+        "employer": "RMIT University, New Academic Street Project",
+        "highlights": [
+          "Wrote high performance QR detection library (C++/WebAssembly). 2-5x range, 10-20x speed relative to JS implementations",
+          "Wrote management dashboard (Polymer)"
+        ],
+        "start": "2017-03",
+        "end": "2017-06"
+      },
+      {
+        "title": "Lab Developer",
+        "employer": "La Trobe University, Department of Physics",
+        "highlights": [
+          "Wrote RPC/PubSub LAN hardware abstraction layer for telemetry and actuation for a diverse array of motors, sensors, X-ray sources",
+          "Front end control design and implementation (Polymer)"
+        ],
+        "start": "2013-06",
+        "end": "2017-05"
+      }
+    ]
+  }
+
   "skills": {
 
     "sets": [
@@ -146,35 +164,35 @@
         "name": "Web Development",
         "level": "intermediate",
         "skills": [
-          "ES6", "HTML 5", "Polymer", "Redux", "Gulp.js", "d3", "Preact"
+          "ES6", "Polymer", "d3", "preact", "WebAssembly"
         ]
       },
       {
         "name": "Backend",
         "level": "intermediate",
         "skills": [
-          "Node.js", "Golang", "Express", "ZeroMQ", "Python"
+          "Node.js+Express", "Golang", "Python+Asyncio", "PubSub/RPC via Websockets"
         ]
       },
       {
         "name": "Data Analysis / HPC",
         "level": "intermediate",
         "skills": [
-            "pyspark", "Matlab", "CUDA"
+            "pyspark", "C++", "CUDA"
         ]
       },
       {
         "name": "Database",
         "level": "intermediate",
         "skills": [
-          "MySQL", "Tinkerpop", "NoSQL", "CouchDB", "MongoDB", "JanusGraph"
+          "MySQL", "CouchDB", "MongoDB", "JanusGraph"
         ]
       },
       {
         "name": "Project",
         "level": "intermediate",
         "skills": [
-          "Agile", "Git", "Continuous Integration", "Continuous Delivery"
+          "Agile", "Git", "Continuous Integration/Delivery"
         ]
       }
     ]
