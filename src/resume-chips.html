@@ -62,6 +62,9 @@
     <template is="dom-if" if="[[!data.end]]">
         <h4>[[_humanize(data.start)]] - Present</h4>
     </template>
+    <template is="dom-if" if="[[data.summary]]">
+        <h4>[[data.summary]]</h4>
+    </template>
     <div class="horizontal layout wrap">
         <template is="dom-repeat" items="[[data.curriculum]]">
             <div class="chip">[[item]]</div>

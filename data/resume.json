@@ -112,10 +112,11 @@
       },
       {
         "institution": "La Trobe University",
-        "title": "Bachelor of Nanotechnology (Hons)/Masters of Nanotechnology. Completed 2 EFTSL",
+        "title": "Bachelor of Nanotechnology (Hons)/Masters of Nanotechnology",
         "url": "https://latrobe.edu.au",
         "start": "2012-02",
         "end": "2014-06",
+        "summary": "Transferred - completed 2 EFTSL",
         "curriculum": ["Imaging and Materials Characterisation", "Modern Physics", "Linear Algebra"]
       }
     ]
@@ -135,7 +136,7 @@
   "employment": {
     "history": [
       {
-        "role": "Software Developer",
+        "position": "Software Developer",
         "employer": "RMIT University, New Academic Street Project",
         "highlights": [
           "Wrote high performance QR detection library (C++/WebAssembly). 2-5x range, 10-20x speed relative to JS implementations",
@@ -145,7 +146,7 @@
         "end": "2017-06"
       },
       {
-        "role": "Lab Developer",
+        "position": "Lab Developer",
         "employer": "La Trobe University, Department of Physics",
         "highlights": [
           "Wrote RPC/PubSub LAN hardware abstraction layer for telemetry and actuation for a diverse array of motors, sensors, X-ray sources",
