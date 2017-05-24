@@ -29,15 +29,14 @@
       "keywords": ["Autobahn", "Polymer", "control systems"]
     },
     {
-      "title": "Morgana",
+      "title": "web-qr",
       "category": "foss",
-      "role": "Front-end developer",
-      "url": "https://h-plus-time.github.io/Morgana",
-      "repo": "https://github.com/GFA-RDIP/Morgana.git",
-      "description": "",
-      "start": "2016-10",
-      "summary": "Created web frontend, multiple spin-off subcomponents",
-      "keywords": ["Polymer", "data visualization", "networks", "health"]
+      "role": "creator",
+      "url": "https://github.com/H-Plus-Time/web-qr",
+      "repo": "https://github.com/H-Plus-Time/web-qr.git",
+      "start": "2017-03",
+      "summary": "WebAssembly-accelerated guided (via high contrast elliptical parent markers) QR detection",
+      "keywords": ["Computer Vision"]
     },
     {
             "title": "ShapeDetection polyfill",
