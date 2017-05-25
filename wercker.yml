@@ -2,10 +2,11 @@ box: hplustime/lighthouse-wercker:latest
 build:
   steps:
     - install-packages:
-        packages: git yarn
+        packages: git
     - script:
-        name: set yarn cache
+        name: install yarn and set yarn cache
         code: |
+          npm install -g yarn
           export YARN_CACHE=$WERCKER_CACHE_DIR/yarn
     - script:
         name: install dependencies
