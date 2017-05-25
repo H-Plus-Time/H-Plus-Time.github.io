@@ -10,11 +10,12 @@ build:
     - script:
         name: install dependencies
         code: |
-          HOME=$YARN_CACHE yarn && yarn global add bower gulp-cli
+          HOME=$YARN_CACHE yarn && yarn global add bower polymer-cli
     - script:
-        name: bower install
+        name: bower install and build
         code: |
           bower install --allow-root --config.interactive=false
+          polymer build
 deploy:
   steps:
     - install-packages:
