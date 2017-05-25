@@ -35,8 +35,9 @@ deploy:
         name: lighthouse audit
         code: |
           mkdir report && cp README.md report
-          lighthouse --chrome-flags="--headless --disable-gpu" https://hplustime.com --output json --output-path=report/lighthouse_results.json
-          lighthouse --chrome-flags="--headless --disable-gpu" https://hplustime.com --output html --output-path=report/index.html
+          headless_shell --no-sandbox --remote-debugging-port=9222 &>1 &
+          lighthouse https://hplustime.com --output json --output-path=report/lighthouse_results.json
+          lighthouse https://hplustime.com --output html --output-path=report/index.html
           echo audit.hplustime.com > report/CNAME
     - script:
         name: surge deploy audit reports
