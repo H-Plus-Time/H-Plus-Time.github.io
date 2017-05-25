@@ -27,7 +27,7 @@ script:
 - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output json --output-path=report/lighthouse_results.json
 - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output html --output-path=report/index.html
 - echo audit.hplustime.com > report/CNAME
-script:
+deploy:
   provider: surge
   project: ./report/
   domain: audit.hplustime.com
