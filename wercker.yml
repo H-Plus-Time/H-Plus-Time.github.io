@@ -18,7 +18,7 @@ build:
 deploy:
   steps:
     - install-packages:
-        packages: git yarn
+        packages: git
     - script:
         name: install bower
         code: yarn global add bower surge
