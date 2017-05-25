@@ -4,9 +4,8 @@ build:
     - install-packages:
         packages: git
     - script:
-        name: install yarn and set yarn cache
+        name: set yarn cache
         code: |
-          npm install -g yarn
           export YARN_CACHE=$WERCKER_CACHE_DIR/yarn
     - script:
         name: install dependencies
