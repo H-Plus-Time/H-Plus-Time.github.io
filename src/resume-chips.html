@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html" />
-<link rel="import" href="resume-behaviours.html" />
+<link rel="import" href="resume-mixin.html" />
 
 <dom-module id="project-chip">
     <template>
@@ -57,10 +57,10 @@
             [[data.institution]]</a> - [[data.title]]
         </h3>
     <template is="dom-if" if="[[data.end]]">
-        <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+        <h4>[[humanizeDate(data.start)]] - [[humanizeDate(data.end)]]</h4>
     </template>
     <template is="dom-if" if="[[!data.end]]">
-        <h4>[[_humanize(data.start)]] - Present</h4>
+        <h4>[[humanizeDate(data.start)]] - Present</h4>
     </template>
     <template is="dom-if" if="[[data.summary]]">
         <h4>[[data.summary]]</h4>
@@ -73,13 +73,10 @@
 
     </template>
     <script>
-        Polymer({
-            is: 'edu-chip',
-            behaviours: [
-                Resume
-            ],
-            _humanize: Resume.humanizeDate
-        });
+        class EduChip extends ResumeMixin(Polymer.Element) {
+            static get is() { return 'edu-chip'; }
+        }
+        window.customElements.define(EduChip.is, EduChip);
     </script>
 </dom-module>
 
@@ -90,18 +87,16 @@
                 display: block;
             }
         </style>
-        <h3>[[data.event]] | [[_humanize(data.date)]]</h3>
+        <h3>[[data.event]] | [[humanizeDateFull(data.date)]]</h3>
         <h3 class="nomargin">[[data.title]]</h3>
         <div>[[data.summary]]</div>
     </template>
     <script>
-        Polymer({
-            is: 'accolade-chip',
-            behaviours: [
-                Resume
-            ],
-            _humanize: Resume.humanizeDateFull
-        });
+        class AccoladeChip extends ResumeMixin(Polymer.Element) {
+            static get is() { return 'accolade-chip'; }
+
+        }
+        window.customElements.define(AccoladeChip.is, AccoladeChip);
     </script>
 </dom-module>
 
@@ -141,17 +136,14 @@
             }
         </style>
         <h3>[[data.title]] | [[data.role]]</h3>
-        <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+        <h4>[[humanizeDate(data.start)]] - [[humanizeDate(data.end)]]</h4>
         <p>[[data.description]]</p>
     </template>
     <script>
-        Polymer({
-            is: 'volunteer-chip',
-            behaviours: [
-                Resume
-            ],
-            _humanize: Resume.humanizeDate
-        });
+        class VolunteerChip extends ResumeMixin(Polymer.Element) {
+            static get is() { return 'volunteer-chip'; }
+        }
+        window.customElements.define(VolunteerChip.is, VolunteerChip);
     </script>
 </dom-module>
 
@@ -163,7 +155,7 @@
             }
         </style>
         <h3>[[data.position]], [[data.employer]]</h3>
-        <h4>[[_humanize(data.start)]] - [[_humanize(data.end)]]</h4>
+        <h4>[[humanizeDate(data.start)]] - [[humanizeDate(data.end)]]</h4>
         <p>[[data.summary]]</p>
         <h4>Highlights</h4>
         <template is="dom-if" if="[[data.highlights]]">
@@ -175,12 +167,9 @@
         </template>
     </template>
     <script>
-        Polymer({
-            is: 'work-chip',
-            behaviours: [
-                Resume
-            ],
-            _humanize: Resume.humanizeDate
-        });
+        class WorkChip extends ResumeMixin(Polymer.Element) {
+            static get is() { return 'work-chip';}
+        }
+        window.customElements.define(WorkChip.is, WorkChip);
     </script>
 </dom-module>

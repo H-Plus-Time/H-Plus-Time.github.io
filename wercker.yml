@@ -1,13 +1,8 @@
-box: justinribeiro/lighthouse
+box: hplustime/lighthouse-wercker:latest
 build:
   steps:
-    - script:
-        name: install yarn, git
-        code: |
-          apt-get update && apt-get install -y git
-          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-          apt-get update && apt-get install -y yarn
+    - install-packages:
+        packages: git yarn
     - script:
         name: set yarn cache
         code: |
@@ -20,40 +15,28 @@ build:
         name: bower install
         code: |
           bower install --allow-root --config.interactive=false
-    - script:
-        name: gulp
-        code: |
-          gulp
 deploy:
   steps:
+    - install-packages:
+        packages: git yarn
     - script:
         name: install bower
-        code: apt-get update && apt-get install -y git && npm install -g bower
+        code: yarn global add bower surge
     - script:
         name: clone posts
         code: |
-          cd build/unbundled && git clone https://github.com/H-Plus-Time/blog.git && \
+          cd build/default && git clone https://github.com/H-Plus-Time/blog.git && \
           rm -r blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../
     - script:
-        name: install surge
-        code: |
-          npm install -g surge
-    - script:
         name: push to surge domain
-        code: surge build/unbundled hplustime.com --token $SURGE_TOKEN
+        code: surge build/default hplustime.com --token $SURGE_TOKEN
     - script:
         name: lighthouse audit
         code: |
           mkdir report && cp README.md report
-          headless_shell --no-sandbox --remote-debugging-port=9222 &>1 &
-          lighthouse https://hplustime.com --output json --output-path=report/lighthouse_results.json
-          lighthouse https://hplustime.com --output html --output-path=report/index.html
+          lighthouse --chrome-flags="--headless --disable-gpu" https://hplustime.com --output json --output-path=report/lighthouse_results.json
+          lighthouse --chrome-flags="--headless --disable-gpu" https://hplustime.com --output html --output-path=report/index.html
           echo audit.hplustime.com > report/CNAME
-    - leipert/git-push:
-        branch: report
-        gh_oauth: $GITHUB_TOKEN
-        basedir: report
-        clean_removed_files: true
     - script:
         name: surge deploy audit reports
         code: surge report audit.hplustime.com --token $SURGE_TOKEN
