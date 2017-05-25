@@ -4,23 +4,28 @@ dist: trusty
 addons:
   apt:
     sources:
-      - google-chrome
+    - google-chrome
     packages:
-      - google-chrome-stable
-      - git
+    - google-chrome-stable
+    - git
 node_js:
-  - '7'
+- '7'
 before_script:
-  - npm install -g bower polymer-cli lighthouse surge
-  - bower install
-  - polymer build
-  - |
-    cd build/default && git clone https://github.com/H-Plus-Time/blog.git
-    rm -rf blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../
+- npm install -g bower polymer-cli lighthouse surge
+- bower install
+- polymer build
+- |
+  cd build/default && git clone https://github.com/H-Plus-Time/blog.git
+  rm -rf blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../
 script:
-  - surge build/default hplustime.com --token $SURGE_TOKEN
-  - mkdir report && cp README.md report
-  - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output json --output-path=report/lighthouse_results.json
-  - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output html --output-path=report/index.html
-  - echo audit.hplustime.com > report/CNAME
-  - surge report audit.hplustime.com --token $SURGE_TOKEN
+- surge build/default hplustime.com --token $SURGE_TOKEN
+- mkdir report && cp README.md report
+- lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output
+  json --output-path=report/lighthouse_results.json
+- lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output
+  html --output-path=report/index.html
+- echo audit.hplustime.com > report/CNAME
+- surge report audit.hplustime.com --token $SURGE_TOKEN
+env:
+  global:
+    secure: dG8M6BTPoD1xLAmGg1m9QbTn5+kJSpXtpRwMqmV7EygulcOBnjD1bkWnLRTVCfdCNvsOWcFMEJ0XFlT7fbJHKCpQpR/6laNJpOQzTGO2ePthstNY0ScdAPi+fOZn+Ixnef/XvexigLrVPtgCoJjZs1h2wV+phWktqJyy8Kc1k6x/BE8Vh060EOLxt+42VSs/N7aUdo+0afSzLGHgikdcdTDM4nlXfY02dPSFqMPttAgyLvtIVq+RircEavAlbgSD94slJBGNZnWmymKLd2i8MV9wH1Lup8X7bOMFDwQW1KCyCeqbvRiboVvAoxpYQUOBYAuLreQhipNDxksn+WRffF1HPuLS4LnyVnKAZ8abCCPmJRlC3wdoLXezu4dV7B0kYUmpbQQ0dGMuttjXcJlDVESXvup80KhycoK6sYSV8+h6PczfilxIubaSmxuZ+5LB5DBxBkh9KI8/FoioFJReCn3ld1ZLs6g+ZonRMqGSsh4ZOqU3JU/0hQQfE35tB6y88M5s/8NK5+e38Q5vKIBA2zi0Qoj/yeWsN8jKVO6UkKmqPag7i4QNxWzWVEGy0zpGsta8hVTdNiJqRHif+G4SAp6BjhRwfYJlpjQxHtl75m1JYYkIpzTVW0VjGVWgj2c/Q23940nxgmYEMwV6Iwm5zHvubs5RMkvlK2jXBNJf9gY=
