@@ -1,10 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-styles/element-styles/paper-material-styles.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <dom-module id="portfolio-card">
   <template>
-    <style include="iron-flex iron-flex-alignment">
+    <style include="iron-flex iron-flex-alignment paper-material-styles">
       :host {
         display: block;
         position:relative;
@@ -14,10 +14,10 @@
         width:200px;
         height:200px;
         background:white;
-        @apply(--shadow-elevation-2dp);
+        @apply --paper-material-elevation-1;
       }
       :host > div:hover {
-        @apply(--shadow-elevation-4dp);
+        @apply --paper-material-elevation-2;
       }
       img {
         padding:4px;

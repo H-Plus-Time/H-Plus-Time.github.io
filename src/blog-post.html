@@ -1,17 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-styles/element-styles/paper-material-styles.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <dom-module id="blog-post">
   <template>
-    <style include="iron-flex iron-flex-alignment">
+    <style include="iron-flex iron-flex-alignment paper-material-styles">
       :host {
         display: block;
       }
-      paper-material {
+      marked-element {
         padding:0 20px;
         background:white;
-        /*min-height:300px;*/
+        @apply --paper-material-elevation-1;
       }
       marked-element div {
         padding:10px;
@@ -24,12 +24,10 @@
       on-response="_processLinkTags"
       last-response="{{content}}">
     </iron-ajax>
-    <paper-material>
-      <marked-element markdown$="{{content}}">
-        <div class="markdown-html">
-        </div>
-      </marked-element>
-    </paper-material>
+    <marked-element markdown$="{{content}}">
+      <div class="markdown-html">
+      </div>
+    </marked-element>
   </template>
   <script>
     Polymer({
