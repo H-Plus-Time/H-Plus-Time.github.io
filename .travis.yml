@@ -17,18 +17,10 @@ before_script:
 - |
   cd build/default && git clone https://github.com/H-Plus-Time/blog.git
   rm -rf blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../
-deploy:
-  provider: surge
-  project: ./build/default
-  domain: hplustime.com
-  skip_cleanup: true
 script:
+- surge build/default hplustime.com --token $SURGE_TOKEN
 - mkdir report && cp README.md report
 - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output json --output-path=report/lighthouse_results.json
 - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output html --output-path=report/index.html
 - echo audit.hplustime.com > report/CNAME
-deploy:
-  provider: surge
-  project: ./report/
-  domain: audit.hplustime.com
-  skip_cleanup: true
+- surge report audit.hplustime.com --token $SURGE_TOKEN
