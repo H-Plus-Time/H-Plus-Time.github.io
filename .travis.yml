@@ -9,11 +9,10 @@ addons:
     packages:
       - google-chrome-stable
 node_js:
+  - '7'
   - '6'
-  - '5'
-  - '4'
 before_script:
-  - npm install -g bower polymer-cli
+  - npm install -g bower polymer-cli lighthouse
   - bower install
 script:
-  - xvfb-run polymer test
+  - lighthouse --chrome-flags="--disable-gpu --headless" https://google.com
