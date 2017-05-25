@@ -16,7 +16,7 @@ before_script:
   - polymer build
   - |
     cd build/default && git clone https://github.com/H-Plus-Time/blog.git
-    rm -r blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../
+    rm -rf blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../
   - surge build/default hplustime.com --token $SURGE_TOKEN
 script:
   - mkdir report && cp README.md report
