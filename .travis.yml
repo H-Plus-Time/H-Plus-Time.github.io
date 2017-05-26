@@ -14,6 +14,7 @@ before_script:
 - npm install -g bower polymer-cli lighthouse surge
 - bower install
 - polymer build
+- cp .surgeignore build/default
 - |
   cd build/default && git clone https://github.com/H-Plus-Time/blog.git
   rm -rf blog/.git && cp blog/bower.json ./ && bower install --force --allow-root && cd ../../

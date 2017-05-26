@@ -1,7 +1,7 @@
 {
   "name": "Hydrogen Plus Time",
   "short_name": "H+Time",
-  "start_url": "/?homescreen=1",
+  "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "rgb(235, 168, 67)",
   "background_color": "rgb(235, 168, 67)",

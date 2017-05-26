@@ -10,10 +10,30 @@
 module.exports = {
   staticFileGlobs: [
     '/index.html',
+    '/index.html',
     '/manifest.json',
-    '/data/resume.json',
-    '/data/portfolio.json',
     '/bower_components/webcomponentsjs/webcomponents-loader.js'
+  ],
+  runtimeCaching: [
+    {
+      urlPattern: /\/bower_components\/webcomponentsjs\/.*.js/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          name: 'webcomponentsjs-polyfills-cache'
+        }
+      }
+    },
+    {
+      urlPattern: /\/data\/.*json/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 100,
+          name: 'data-cache'
+        }
+      }
+    }
   ],
   navigateFallback: '/index.html'
 };

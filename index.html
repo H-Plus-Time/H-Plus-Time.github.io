@@ -45,7 +45,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
     <meta name="msapplication-TileColor" content="rgb(235, 168, 67)">
     <meta name="msapplication-tap-highlight" content="no">
-    <link rel="preload" href="../data/resume.json">
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
@@ -56,9 +55,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="/bower_components/shadycss/apply-shim.html">
-    <link rel="import" href="/src/showcase-app.html" async>
-
     <style>
       body {
         margin: 0;
@@ -122,5 +118,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       </div>
     </showcase-app>
+    <link rel="import" href="/src/showcase-app.html">
   </body>
 </html>
