@@ -20,12 +20,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="showcase-icons.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html" async>
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html" async>
 <link rel="import" href="../bower_components/neon-animation/neon-animation.html" async>
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html" async>
 <dom-module id="showcase-app">
   <template>
     <style include="iron-flex iron-flex-alignment">
@@ -54,14 +53,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       paper-tab[link] a {
-          /* These mixins (from iron-flex-layout) center the link text. */
-          /*@apply(--layout-horizontal);*/
-          /*@apply(--layout-center-center);*/
           color: inherit;
           text-decoration: none;
-          padding-left:10px;
-          padding-right:10px;
-          flex: 1 1 auto;
+          padding:0 10px 0 10px;
           height:50% !important;
         }
 
@@ -87,7 +81,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin:auto;
       }
       app-header app-toolbar:first-of-type {
-        /*height:100px;*/
         align-items:flex-start;
       }
       app-toolbar paper-tabs {
@@ -99,22 +92,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-pages {
         height:calc(100vh - 128px);
       }
-      .fullscreen {
-        position:absolute;
-        top:0;
-        bottom:0;
-        right:0;
-        left:0;
-        width:100vw;
-        height:100vh;
-        margin:0 !important;
-      }
-      .portfolio-card {
-        background:white;
-      }
       .back-nav {
         border-radius:50%;
-        @apply(--shadow-elevation-2dp);
+        @apply --paper-material-elevation-1;
       }
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
@@ -128,7 +108,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-    <paper-dialog class="fullscreen portfolio-card"
+    <paper-dialog
       entry-animation="scale-up-animation"
       exit-animation="fade-out-animation"
       opened$="[[fullscreenPortfolio]]">
