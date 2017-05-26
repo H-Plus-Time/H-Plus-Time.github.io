@@ -11,6 +11,9 @@ addons:
 node_js:
 - '7'
 before_script:
+- |
+  git clone https://github.com/H-Plus-Time/TIL.git til
+  cd til && bash ../postAge.sh && python ../postsObjGen.py && cd ..
 - npm install -g bower polymer-cli lighthouse surge
 - bower install
 - polymer build

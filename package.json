@@ -17,13 +17,6 @@
   "devDependencies": {
     "babel-plugin-array-includes": "^2.0.3",
     "babel-preset-es2015-script": "^1.1.0",
-    "del": "^2.2.1",
-    "gulp": "gulpjs/gulp#4.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-clean-css": "^2.0.12",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-if": "^2.0.1",
-    "gulp-uglify": "^2.0.0",
     "merge-stream": "^1.0.0",
     "plylog": "^0.4.0",
     "polymer-build": "^0.4.0"
@@ -31,6 +24,9 @@
   "dependencies": {
     "bower": "^1.8.0",
     "dat": "^13.4.1",
-    "gulp-imagemin": "^3.1.1"
+    "es6-promisify": "^5.0.0",
+    "marked": "^0.3.6",
+    "recursive-readdir": "^2.2.1",
+    "simple-git": "^1.73.0"
   }
 }

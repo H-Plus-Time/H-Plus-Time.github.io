@@ -2,9 +2,11 @@
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-styles/element-styles/paper-material-styles.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-<dom-module id="blog-post">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+
+<dom-module id="til-post">
   <template>
-    <style include="iron-flex iron-flex-alignment paper-material-styles">
+    <style>
       :host {
         display: block;
       }
@@ -19,21 +21,43 @@
       }
     </style>
     <iron-ajax auto
-      url="/[[prefix]]/[[url]]"
+      url="/[[prefix]]/[[src]]"
       handle-as="text"
       on-response="_processLinkTags"
       last-response="{{content}}">
     </iron-ajax>
-    <marked-element markdown$="{{content}}">
-      <div class="markdown-html">
-      </div>
+    <h2 style="text-align:right">[[dateString]]</h2>
+    <marked-element markdown="[[content]]">
+      <div slot="markdown-html"></div>
     </marked-element>
   </template>
   <script>
-    Polymer({
-      is: 'blog-post',
+    class TilPost extends Polymer.Element {
+      static get is() { return 'til-post'; }
+      static get properties() {
+         return {
+           src: {
+             type: String
+           },
+           prefix: {
+             type: String
+           },
+           time: {
+            type: String
+           },
+           dateString: {
+             type: String,
+             computed: 'computeDateStr(time)'
+           }
+         }
+      }
+
+      computeDateStr(time) {
+        return new Date(Number(time * 1000));
+      }
 
       _processLinkTags(data) {
+        return;
         var x = data.detail.response;
         var tokens = marked.lexer(x);
         var linkTags = tokens.filter((tok) => tok.text.indexOf("<link") != -1)
@@ -48,6 +72,7 @@
           // this.importHref(resolvedPageUrl, null, null, true);
         })
       }
-    });
+    }
+    window.customElements.define(TilPost.is, TilPost);
   </script>
 </dom-module>
