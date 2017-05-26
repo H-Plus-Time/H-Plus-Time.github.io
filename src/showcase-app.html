@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
@@ -195,64 +195,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    Polymer({
-      is: 'showcase-app',
+    class ShowcaseApp extends Polymer.Element {
+      static get is() { return 'showcase-app'; }
+      static get properties() {
+        return  {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged'
+          },
 
-      properties: {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
-        },
+          menuItems: {
+            type: Array,
+            value: _ => (
+              [
+                {name: "home", label: "Home"},
+                {name: "resume", label: "Resume"},
+                {name: "portfolio", label: "Portfolio"},
+                {name: "til", label: "til"}
+              ]
+            )
+          },
 
-        menuItems: {
-          type: Array,
-          value: _ => (
-            [
-              {name: "home", label: "Home"},
-              {name: "resume", label: "Resume"},
-              {name: "portfolio", label: "Portfolio"},
-              {name: "til", label: "til"}
-            ]
-          )
-        },
+          smallScreen: {
+            type: Boolean,
+            notify: true,
+            value: _ => false
+          },
 
-        smallScreen: {
-          type: Boolean,
-          notify: true,
-          value: _ => false
-        },
-
-        fullscreenPortfolio: {
-          type: Boolean,
-          value: _ => false
+          fullscreenPortfolio: {
+            type: Boolean,
+            value: _ => false
+          }
         }
-      },
-
-      observers: [
-        '_routePageChanged(routeData.page)'
-      ],
+      }
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)'
+        ]
+      }
 
       _ensureHardNav(page) {
-      },
-      _routePageChanged: function(page) {
+      }
+      _routePageChanged(page) {
         this.page = page || 'home';
-      },
+      }
 
-      _pageChanged: function(page) {
+      _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('showcase-' + page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-      },
+        Polymer.importHref(resolvedPageUrl, null, this._showPage404, true);
+      }
 
-      _showPage404: function() {
+      _showPage404() {
         this.page = 'view404';
-      },
+      }
 
       toggleFSPortfolio(e) {
         this.portfolio = e.detail;
         this.fullscreenPortfolio = !this.fullscreenPortfolio;
       }
-    });
+    }
+    window.customElements.define(ShowcaseApp.is, ShowcaseApp);
   </script>
 </dom-module>

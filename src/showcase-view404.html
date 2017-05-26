@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <dom-module id="showcase-view404">
   <template>
@@ -24,8 +24,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    Polymer({
-      is: 'showcase-view404'
-    });
+    class ShowcaseView404 extends Polymer.Element {
+      static get is() { return 'showcase-view404'; }
+    }
+    window.customElements.define(ShowcaseView404.is, ShowcaseView404);
   </script>
 </dom-module>

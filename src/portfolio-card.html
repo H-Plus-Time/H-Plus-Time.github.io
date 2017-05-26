@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-styles/element-styles/paper-material-styles.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
@@ -56,38 +56,41 @@
     </div>
   </template>
   <script>
-    Polymer({
-      is: 'portfolio-card',
-      properties: {
-        hovered: {
-          type: Boolean,
-          value: _ => false
-        },
-        expanded: {
-          type: Boolean,
-          value: _ => false
+    class PortfolioCard extends Polymer.Element {
+      static get is() { return 'portfolio-card'; }
+      static get properties() {
+        return {
+          hovered: {
+            type: Boolean,
+            value: _ => false
+          },
+          expanded: {
+            type: Boolean,
+            value: _ => false
+          }
         }
-      },
+      }
+
       _toggleView() {
         this.hovered = !this.hovered;
-      },
+      }
       _fireExpandCard(e) {
         this.dispatchEvent(new CustomEvent('expand-portfolio-card', {detail: this.data, bubbles: true}))
-      },
+      }
 
       _computeDetailHidden(hovered, expanded) {
         if(expanded) {
           return false;
         }
         return !hovered;
-      },
+      }
       _computeMainHidden(hovered, expanded) {
         if(expanded) {
           return false;
         }
         return hovered;
       }
-
-    });
+    }
+    window.customElements.define(PortfolioCard.is, PortfolioCard);
   </script>
 </dom-module>

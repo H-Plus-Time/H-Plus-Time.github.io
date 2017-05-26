@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html" />
 <link rel="import" href="resume-mixin.html" />
@@ -24,9 +24,10 @@
         </p>
     </template>
     <script>
-        Polymer({
-            is: "project-chip",
-        })
+        class ProjectChip extends Polymer.Element {
+            static get is() { return 'project-chip'; }
+        }
+        window.customElements.define(ProjectChip.is, ProjectChip);
     </script>
 </dom-module>
 
@@ -122,9 +123,10 @@
         </div>
     </template>
     <script>
-        Polymer({
-            is: 'skill-chip',
-        });
+        class SkillChip extends Polymer.Element {
+            static get is() { return 'skill-chip'; }
+        }
+        window.customElements.define(SkillChip.is, SkillChip);
     </script>
 </dom-module>
 
