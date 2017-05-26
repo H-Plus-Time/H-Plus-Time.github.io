@@ -19,9 +19,9 @@ before_script:
 - polymer build
 script:
 - cp .surgeignore build/default
+- cp til build/default
 - surge build/default hplustime.com --token $SURGE_TOKEN
 - mkdir report && cp README.md report
-- lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output json --output-path=report/lighthouse_results.json
 - lighthouse --chrome-flags="--disable-gpu --headless" https://hplustime.com --output html --output-path=report/index.html
 - echo audit.hplustime.com > report/CNAME
 - surge report audit.hplustime.com --token $SURGE_TOKEN
