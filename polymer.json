@@ -23,6 +23,8 @@
   },
   "builds": [{
     "preset": "es6-bundled",
+    "addPushManifest": false,
+    "swPrecacheConfig": "sw-precache-config.js",
     "name": "default"
   }]
 }
