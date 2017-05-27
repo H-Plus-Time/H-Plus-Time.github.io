@@ -11,9 +11,6 @@ module.exports = {
   staticFileGlobs: [
     '/index.html',
     '/manifest.json',
-    '/til/posts.json',
-    '/til/*.md',
-    '/data/resume.json',
     '/bower_components/webcomponentsjs/webcomponents-loader.js'
   ],
   runtimeCaching: [
@@ -28,6 +25,16 @@ module.exports = {
     },
     {
       urlPattern: /\/data\/.*json/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 100,
+          name: 'data-cache'
+        }
+      }
+    },
+    {
+      urlPattern: /\/til\/.*md/,
       handler: 'fastest',
       options: {
         cache: {

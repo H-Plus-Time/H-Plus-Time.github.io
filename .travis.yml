@@ -13,7 +13,7 @@ node_js:
 before_script:
 - |
   git clone https://github.com/H-Plus-Time/TIL.git til
-  cd til && bash ../postAge.sh && python ../postsObjGen.py && cd ..
+  cd til && bash ../postAge.sh && python ../postsObjGen.py && mv posts.json ../data && cd ..
 - npm install -g bower polymer-cli lighthouse surge
 - bower install
 - polymer build
