@@ -6,4 +6,4 @@ if __name__ == "__main__":
         rows = list(csv.reader(f))
 
     with open("posts.json", "w") as f:
-        json.dump(map(lambda x: {"src": x[0][1:], "time": x[1]}, rows), f)
+        json.dump(map(lambda x: {"src": x[0][1:], "created": x[1], "last_modified": x[2]}, rows), f)

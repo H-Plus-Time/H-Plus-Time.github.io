@@ -29,7 +29,7 @@
     <prism-highlighter></prism-highlighter>
     <!--<iron-list items="[[urls]]">-->
         <template is="dom-repeat" items="[[sortedUrls]]">
-          <til-post prefix="til" src="[[item.src]]" time="[[item.time]]"></til-post>
+          <til-post prefix="til" data="[[item]]"></til-post>
         </template>
     <!--</iron-list>-->
   </template>
@@ -48,7 +48,7 @@
         }
       }
       sortUrls(urls) {
-        return urls.sort((a,b) => a.time < b.time)
+        return urls.sort((a,b) => a.created < b.created)
       }
 
       _filteredUrls(urls) {

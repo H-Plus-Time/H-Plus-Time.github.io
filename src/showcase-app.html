@@ -20,9 +20,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<!--<link rel="import" href="../bower_components/iron-icons/iron-icons.html">-->
 <link rel="import" href="showcase-icons.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html" async>
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html" async>
 <link rel="import" href="../bower_components/neon-animation/neon-animation.html" async>
 <dom-module id="showcase-app">
@@ -123,7 +124,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </paper-dialog>
     <app-drawer-layout fullbleed force-narrow>
       <!-- Drawer content -->
-      <app-drawer>
+      <app-drawer slot="drawer">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <template is="dom-repeat" items="[[menuItems]]">
@@ -139,7 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <app-toolbar>
             <div hidden$="[[!smallScreen]]">
               <paper-icon-button
-                icon="menu" drawer-toggle>
+                icon="showcase-icons:menu" drawer-toggle>
               </paper-icon-button>
             </div>
             <div hidden$="[[smallScreen]]">
@@ -192,7 +193,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 {name: "home", label: "Home"},
                 {name: "resume", label: "Resume"},
                 {name: "portfolio", label: "Portfolio"},
-                {name: "til", label: "til"}
+                {name: "til", label: "Today I Learned"}
               ]
             )
           },

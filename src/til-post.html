@@ -21,12 +21,12 @@
       }
     </style>
     <iron-ajax auto
-      url="/[[prefix]]/[[src]]"
+      url="/[[prefix]]/[[data.src]]"
       handle-as="text"
       on-response="_processLinkTags"
       last-response="{{content}}">
     </iron-ajax>
-    <h2 style="text-align:right">[[dateString]]</h2>
+    <h2 style="text-align:right">[[dateString]][[modificationString]]</h2>
     <marked-element markdown="[[content]]">
       <div slot="markdown-html"></div>
     </marked-element>
@@ -42,18 +42,29 @@
            prefix: {
              type: String
            },
-           time: {
-            type: String
+           data: {
+            type: Object
            },
            dateString: {
              type: String,
-             computed: 'computeDateStr(time)'
+             computed: 'computeDateStr(data.created)'
+           },
+           modificationString: {
+             type: String,
+             computed: 'computeModified(data.created, data.last_modified)'
            }
          }
       }
 
+      computeModified(created, modified) {
+        if(Number(modified) == Number(created)) {
+          return '';
+        }
+        return `, Modified: ${new Date(Number(modified) * 1000).toLocaleDateString()}`;
+      }
+
       computeDateStr(time) {
-        return new Date(Number(time * 1000));
+        return new Date(Number(time * 1000)).toLocaleDateString();
       }
 
       _processLinkTags(data) {
