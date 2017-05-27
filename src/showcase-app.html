@@ -8,6 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
+<link rel="import" href="../bower_components/polymer/lib/utils/render-status.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
@@ -234,6 +235,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       toggleFSPortfolio(e) {
         this.portfolio = e.detail;
         this.fullscreenPortfolio = !this.fullscreenPortfolio;
+      }
+
+      ready() {
+        super.ready();
+        Polymer.RenderStatus.afterNextRender(this.shadowRoot.querySelector('showcase-home'), () => {
+          Polymer.importHref(this.resolveUrl('showcase-resume.html'),
+            null, null, true);
+          Polymer.importHref(this.resolveUrl('showcase-til.html'),
+            null, null, true);
+        });
       }
     }
     window.customElements.define(ShowcaseApp.is, ShowcaseApp);
