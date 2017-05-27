@@ -39,7 +39,7 @@ module.exports = {
       options: {
         cache: {
           maxEntries: 100,
-          name: 'data-cache'
+          name: 'til-cache'
         }
       }
     }
