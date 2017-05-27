@@ -10,8 +10,10 @@
 module.exports = {
   staticFileGlobs: [
     '/index.html',
-    '/index.html',
     '/manifest.json',
+    '/til/posts.json',
+    '/til/*.md',
+    '/data/resume.json',
     '/bower_components/webcomponentsjs/webcomponents-loader.js'
   ],
   runtimeCaching: [
