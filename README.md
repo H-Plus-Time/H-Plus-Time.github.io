@@ -1,6 +1,6 @@
 # hplustime.com
 
-[![wercker status](https://app.wercker.com/status/8640b33e42289cbfc89635bbc365789b/s/master "wercker status")](https://app.wercker.com/project/byKey/8640b33e42289cbfc89635bbc365789b)
+[![Build Status](https://travis-ci.org/H-Plus-Time/hplustime.com.svg?branch=master)](https://travis-ci.org/H-Plus-Time/hplustime.com)
 
 ## Deployment
 Typically this is handled in the wercker.yml, but if you need to do it manually, run:
