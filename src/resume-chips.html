@@ -114,17 +114,24 @@
                 margin:2px 2px;
                 color:white;
             }
+            .chip:hover {
+                color:var(--app-accent-color);
+                background:white;
+            }
         </style>
         <h3>[[data.name]]</h3>
         <div class="horizontal layout wrap">
             <template is="dom-repeat" items="[[data.skills]]">
-                <div class="chip">[[item]]</div>
+                <a class="chip" href$="/?tag=[[lower(item)]]#/portfolio">[[item]]</a>
             </template>
         </div>
     </template>
     <script>
         class SkillChip extends Polymer.Element {
             static get is() { return 'skill-chip'; }
+            lower(val) {
+                return val.toLowerCase()
+            }
         }
         window.customElements.define(SkillChip.is, SkillChip);
     </script>
