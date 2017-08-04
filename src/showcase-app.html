@@ -128,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <template is="dom-repeat" items="[[menuItems]]">
-            <a name="[[item.name]]" href="/#/[[item.name]]">[[item.label]]</a>
+            <a name="[[item.name]]" href="#/[[item.name]]">[[item.label]]</a>
           </template>
         </iron-selector>
       </app-drawer>
@@ -148,7 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 attr-for-selected="name">
                 <template is="dom-repeat" items="[[menuItems]]">
                   <paper-tab name="[[item.name]]" link>
-                    <a href="/#/[[item.name]]">[[item.label]]</a>
+                    <a href="#/[[item.name]]">[[item.label]]</a>
                   </paper-tab>
                 </template>
               </paper-tabs>
@@ -167,7 +167,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <showcase-home name="home"></showcase-home>
           <showcase-portfolio name="portfolio"
             on-expand-portfolio-card="toggleFSPortfolio"></showcase-portfolio>
-          <showcase-resume name="resume" url="../data/resume.json"></showcase-resume>
+          <showcase-resume name="resume" url="data/resume.json"></showcase-resume>
           <showcase-til name="til"></showcase-til>
           <showcase-view404 name="view404"></showcase-view404>
         </iron-pages>
