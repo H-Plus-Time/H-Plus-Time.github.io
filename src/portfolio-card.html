@@ -2,57 +2,41 @@
 <link rel="import" href="../bower_components/paper-styles/element-styles/paper-material-styles.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/paper-chip/paper-chip.html">
 <dom-module id="portfolio-card">
   <template>
     <style include="iron-flex iron-flex-alignment paper-material-styles">
       :host {
         display: block;
-        position:relative;
-        margin:5px;
       }
-      :host > div a div {
-        width:200px;
-        height:200px;
-        background:white;
-        @apply --paper-material-elevation-1;
-      }
-      :host > div:hover {
+      :host > div {
         @apply --paper-material-elevation-2;
+        margin:5px;
+        background:white;
+        border-radius:5px;
+        padding:5px;
+        width:300px;
+        height:200px;
       }
       img {
-        padding:4px;
-        width:192px;
-        height:192px;
+        width:100px;
+        height:100px;
       }
-      a {
-        text-decoration:none;
-        color:black;
-        font-family: 'Roboto', 'Noto', sans-serif;
-      }
-      .detail {
-        position:absolute;
-        bottom:0;
-        right:0;
-        border-radius:50%;
-        color:var(--app-tertiary-color);
-      }
-      .detail:hover {
-        @apply(--shadow-elevation-2dp);
+      paper-chip {
+        margin:1px;
       }
     </style>
-    <div on-mouseover="_toggleView" on-mouseout="_toggleView">
-      <!-- <paper-icon-button
-        icon="fullscreen" on-tap="_fireExpandCard"
-        class="detail"></paper-icon-button> -->
-      <a href="[[data.base_url]]" target="_blank" alt="[[data.name]]">
-        <div hidden$="[[_computeMainHidden(hovered, expanded)]]">
-          <img src="[[data.base_url]]/[[data.logo]]"
-            alt="[[data.name]]" />
+    <div>
+      <div class="horizontal layout">
+        <img src="[[data.base_url]]/[[data.logo]]" alt="[[data.name]]" />
+        <div class="horizontal layout wrap">
+          <template is="dom-repeat" items="[[data.tags]]" as="tag">
+            <paper-chip animated>
+              <div slot="label">[[tag]]</div>
+            </paper-chip>
+          </template>
         </div>
-        <div hidden$="[[_computeDetailHidden(hovered, expanded)]]">
-
-        </div>
-      </a>
+      </div>
     </div>
   </template>
   <script>

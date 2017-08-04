@@ -1,7 +1,36 @@
-[
-  {"name": "Morgana", "logo": "frontend/images/manifest/icon-192x192.png", "base_url": "https://h-plus-time.github.io/Morgana"},
-  {"name": "das_hackathon", "logo": "images/manifest/icon-192x192.png", "base_url": "https://dashackathon.surge.sh"},
-  {"name": "controlroom", "logo": "images/manifest/icon-192x192.png", "base_url": "https://h-plus-time.github.io/controlroom"},
-  {"name": "zeitgeist", "logo": "images/manifest/icon-192x192.png", "base_url": "https://zeitgeist.surge.sh"},
-  {"name": "d3-sunburst", "logo": "images/main-logo.png", "base_url": "https://h-plus-time.github.io/d3-sunburst"}
+[{
+    "name": "das_hackathon",
+    "tags": ["polymer"],
+    "logo": "images/manifest/icon-192x192.png",
+    "base_url": "https://dashackathon.surge.sh",
+    "source": "https://github.com/H-Plus-Time/das_hackathon"
+  },
+  {
+    "name": "controlroom",
+    "tags": ["polymer"],
+    "logo": "images/manifest/icon-192x192.png",
+    "base_url": "https://h-plus-time.github.io/controlroom",
+    "source": "https://github.com/H-Plus-Time/controlroom"
+  },
+  {
+    "name": "zeitgeist",
+    "tags": ["polymer"],
+    "logo": "images/manifest/icon-192x192.png",
+    "base_url": "https://zeitgeist.surge.sh",
+    "source": "https://github.com/H-Plus-Time/zeitgeist-front"
+  },
+  {
+    "name": "hermes",
+    "tags": ["polymer"],
+    "logo": "images/manifest/icon-192x192.png",
+    "base_url": "https://hermes.surge.sh",
+    "source": "https://github.com/H-Plus-Time/hermes-front"
+  },
+  {
+    "name": "d3-sunburst",
+    "tags": ["polymer", "d3"],
+    "logo": "images/main-logo.png",
+    "base_url": "https://h-plus-time.github.io/d3-sunburst",
+    "source": "https://github.com/H-Plus-Time/d3-sunburst"
+  }
 ]
