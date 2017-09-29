@@ -135,6 +135,11 @@
   "employment": {
     "history": [
       {
+        "position": "Web Application Developer",
+        "employer": "GapMaps Ltd.",
+        "start": "2017-10"
+      },
+      {
         "position": "Software Developer",
         "employer": "RMIT University, New Academic Street Project",
         "highlights": [
@@ -164,21 +169,28 @@
         "name": "Web Development",
         "level": "intermediate",
         "skills": [
-          "ES6", "Polymer", "d3", "preact", "WebAssembly"
+          "ES6", "Polymer", "d3", "preact", "WebAssembly", "Angular"
         ]
       },
       {
         "name": "Backend",
         "level": "intermediate",
         "skills": [
-          "Node.js+Express", "Golang", "Python+Asyncio", "PubSub/RPC via Websockets"
+          "Node.js+Express", "Python+Asyncio", "PubSub/RPC via Websockets"
+        ]
+      },
+      {
+        "name": "Systems",
+        "level": "intermediate",
+        "skills": [
+          "Rust", "Golang", "C++"
         ]
       },
       {
         "name": "Data Analysis / HPC",
         "level": "intermediate",
         "skills": [
-            "pyspark", "C++", "CUDA"
+            "Spark", "CUDA"
         ]
       },
       {
