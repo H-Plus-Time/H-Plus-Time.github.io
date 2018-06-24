@@ -1,30 +1,69 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/showcase-app.html",
-  "fragments": [
-    "src/showcase-home.html",
-    "src/showcase-portfolio.html",
-    "src/showcase-til.html",
-    "src/showcase-resume.html",
-    "src/showcase-view404.html"
-  ],
+  "shell": "src/components/my-app.js",
   "sources": [
-   "src/**/*",
-   "images/**/*",
-   "data/**/*",
-   "bower.json"
+    "images/**/*"
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-loader.js"
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "push-manifest.json"
   ],
-  "lint": {
-    "rules": ["polymer-2"]
-  },
-  "builds": [{
-    "preset": "es6-bundled",
-    "addPushManifest": false,
-    "swPrecacheConfig": "sw-precache-config.js",
-    "name": "default"
-  }]
+  "builds": [
+    {
+      "name": "esm-bundled",
+      "browserCapabilities": [
+        "es2015",
+        "modules"
+      ],
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es5-bundled",
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    }
+  ],
+  "moduleResolution": "node",
+  "npm": true
 }

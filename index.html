@@ -1,6 +1,6 @@
 <!--
 @license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
@@ -12,10 +12,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="generator" content="PWA Starter Kit">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>hplustime.com</title>
-    <meta name="description" content="Portfolio PWA of H-Plus-Time">
+    <title>Showcase app</title>
+    <meta name="description" content="Showcase App description">
+
+    <!--
+      The `<base>` tag below is present to support two advanced deployment options:
+      1) Differential serving. 2) Serving from a non-root path.
+
+      Instead of manually editing the `<base>` tag yourself, you should generally either:
+      a) Add a `basePath` property to the build configuration in your `polymer.json`.
+      b) Use the `--base-path` command-line option for `polymer build`.
+    -->
+    <base href="/">
 
     <link rel="icon" href="images/favicon.ico">
 
@@ -23,16 +34,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="manifest" href="manifest.json">
 
     <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="rgb(235, 168, 67)">
+    <meta name="theme-color" content="#3f51b5">
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Showcase">
+    <meta name="application-name" content="Showcase App">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Showcase">
+    <meta name="apple-mobile-web-app-title" content="Showcase App">
 
     <!-- Homescreen icons -->
     <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
@@ -42,82 +53,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
 
     <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="rgb(235, 168, 67)">
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Default twitter cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@username">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="showcaseapp">
+    <meta property="og:image" content="images/manifest/icon-144x144.png" />
+
+    <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script>
+      // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js');
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: '/',
+          });
         });
       }
+
+      // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+      // https://github.com/reactjs/redux/issues/2907
+      window.process = { env: { NODE_ENV: 'production' } };
     </script>
 
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- Add any global styles for body, document, etc. -->
     <style>
+      @font-face {
+        font-family: 'Pacifico';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+        /* THe browser draws the text immediately in the fallback font if the font
+           isn't loaded, then swaps it with the webfont when it eventually loads
+           See: https://developers.google.com/web/updates/2016/02/font-display
+        */
+        font-display: swap;
+      }
       body {
         margin: 0;
-        font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
-        text-rendering: optimizeLegibility;
+        /* This is a font-stack that tries to use the system-default sans-serifs first */
+        font-family: Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        line-height: 1.5;
+        min-height: 100vh;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: 0.02em;
-        line-height: 1.5;
-        min-height: 100vh;
-        background-color: #eeeeee;
       }
-    </style>
-    <style>
-      body {
-        margin: 0;
-        /*font-family: 'Roboto', 'Noto', sans-serif;*/
-        line-height: 1.5;
-        height: 100%;
-        min-height: 100vh;
-        background-color: #eeeeee;
-      }
-      /* styling for render while resources are loading */
-      .splash {
-        display: block;
-        text-align: center;
-        font-weight: 300;
-        font-size: 18px;
-        color: black;
-        max-width: 400px;
-        margin: auto;
-        padding-top: 20%;
-      }
-      .loading-header {
-        height: 350px;
-        overflow: hidden;
-      }
-      .loading {
-        animation: blink 1.5s linear infinite;
-        -o-animation: blink 1.5s linear infinite;
-        -moz-animation: blink 1.5s linear infinite;
-        -webkit-animation: blink 1.5s linear infinite;
-      }
-      @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
-      @-webkit-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
-      @-moz-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
-      @-o-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
     </style>
   </head>
   <body>
-    <showcase-app>
-      <div class="splash">
-        <div class="loading-header">
-          <div style="font-size:3.8em">
-            <img src="images/manifest/icon-192x192.png" alt="Logo for hplustime">
-          </div>
-          <h1 class="loading">
-            Loading...
-          </h1>
-        </div>
-
-      </div>
-    </showcase-app>
-    <link rel="import" href="src/showcase-app.html">
+    <showcase-app appTitle="H-Plus-Time"></showcase-app>
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- Built with love using PWA Starter Kit -->
+    <script type="module" src="src/components/showcase-app.js" crossorigin></script>
   </body>
 </html>

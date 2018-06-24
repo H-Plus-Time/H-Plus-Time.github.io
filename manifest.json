@@ -1,10 +1,11 @@
 {
-  "name": "Hydrogen Plus Time",
-  "short_name": "H+Time",
-  "start_url": "/index.html",
+  "name": "H Plus Time",
+  "short_name": "H Plus Time",
+  "description": "Hydrogen Plus Time",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "rgb(235, 168, 67)",
-  "background_color": "rgb(235, 168, 67)",
+  "theme_color": "#3f51b5",
+  "background_color": "#3f51b5",
   "icons": [
     {
       "src": "images/manifest/icon-192x192.png",

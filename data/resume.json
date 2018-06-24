@@ -136,6 +136,12 @@
     "history": [
       {
         "position": "Software Developer",
+        "employer": "GapMaps Pty Ltd.",
+        "start": "2017-10",
+        "end": "present"
+      },
+      {
+        "position": "Software Developer",
         "employer": "RMIT University, New Academic Street Project",
         "highlights": [
           "Wrote high performance QR detection library (C++/WebAssembly). 2-5x range, 10-20x speed relative to JS implementations",
